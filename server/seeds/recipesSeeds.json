@@ -1,0 +1,43 @@
+[
+    {
+        "recipeName":"Kettle Corn",
+        "servings":"2",
+        "cookTime":"3",
+        "prepTime":"2",
+        "specialTools":"None",
+        "ingredients":["2 Tablespoons sugar", "1/2 teaspoon salt", "1 1/2 tablespoons vegetable oil", "1/4 cup popcorn kernels"],
+        "instructions":["In a small bowl, combine the sugar and salt, and stir with your finger to combine. Set aside.",
+        "Place a medium to large stockpot (at least 5 quarts) with a tight-fitting lid over medium high heat. Add the vegetable oil and 3 to 4 kernels of popcorn. Secure the lid.",
+        "Once the test kernels begin to pop, add the rest of the popcorn, along with the sugar and salt mixture. Stir quickly with a wooden spoon to combine (skip this step and you risk the sugar burning)",
+        "Quickly replace the lid and continue cooking, constantly shaking the pot. At first there won’t be any popping, but in less than a minute, the popcorn will begin to pop. Remove from heat when you smell a whiff of caramel, or the popping slows to 1 second between pops",
+        "Moving swiftly, turn the popcorn into a serving bowl and let it cool a few minutes. If there’s some melted or burned sugar residue in the pot, add a few cups of water, bring to a boil, and simmer, covered, for 5 minutes to dissolve the sugar; dump the hot water down the sink, and your pot should be in much better shape.",
+        "Before you dig in, sort through the kettle corn and pick out as many unpopped kernels as you can. A few stragglers often stick to clusters of the popped kernels. Serve warm, or, for maximum crunch and flavor, at room temperature. The kettle corn will keep three to four days in a tightly covered container."],
+        "recipeAuthor":"Some Author/ User",
+        "ratings":"4/5",
+        "tags":["Popcorn", "snacks", "under 10 minutes"]
+    },
+    {
+        "recipeName":"Coquito",
+        "servings":"7",
+        "cookTime":"35",
+        "prepTime":"5",
+        "specialTools":"No",
+        "ingredients":["1 (14 ounce) can sweetened condensed milk", "1 (15 ounce) can cream of coconut","1 (12 ounce) can evaporated milk","1 (13.5 ounce) can of coconut milk","2 teaspoons vanilla, or 1 vanilla bean, split and seeded","2 whole cinnamon sticks","1/2 teaspoon grated nutmeg","1 to 2 cups rum"],
+        "instructions":["Place the sweetened condensed milk, cream of coconut, evaporated milk, coconut milk, vanilla, cinnamon sticks, and nutmeg (all the ingredients except the rum) in a large saucepan. Warm over medium-high heat until just starting to simmer.        Remove from heat, cover, and let infuse for 30 minutes.","Remove the cinnamon sticks and the vanilla bean (if using) and pour the mixture into a punch bowl or pitcher. (Note: I rinse and dry the vanilla bean and cinnamon sticks, and save them future infusions such as rice pudding.)    Add 1 cup of rum and taste; add more rum for a stronger punch. I usually stick to around 2 cups as I prefer it strong.","Chill this in the fridge for at least 2 hours or for up to 3 days.","Serve neat or over ice in small portions. Garnish with grated nutmeg or ground cinnamon as desired."],
+        "recipeAuthor":"User",
+        "ratings":"3/5",
+        "tags":["Drinks", "vegetarian", ""]
+    },
+    {
+        "recipeName":"Cauliflower Cheddar Soup",
+        "servings":"6",
+        "cookTime":"40",
+        "prepTime":"20",
+        "specialTools":"Immersion Blender",
+        "ingredients":["2 tablespoons butter","2 cups sliced onion ","1 1/2 cups sliced celery (about 2 to 3 ribs)","1/2 cup sliced carrot (1 small carrot)","1 1/2 tablespoons minced garlic","2 Yukon gold potatoes, peeled and thinly sliced","6 cups chicken stock ","6 cups roughly chopped cauliflower","2 bay leaves","1 1/2 teaspoons fresh thyme leaves, or 1 teaspoon dried thyme","1 teaspoon kosher salt","1/8 teaspoon freshly ground black pepper","1 1/2 cups grated sharp cheddar cheese","1 teaspoon Worcestershire sauce"],
+        "instructions":["Heat butter in a large 5- to 6- quart Dutch oven or thick bottomed pot on medium high heat. Add the onions, celery, and carrots.  Cook for 5 to 8 minutes until the onions are softened. Add the minced garlic and cook a minute more","Heat on high and bring the stock to a simmer. Lower the heat to maintain a simmer. Partially cover and cook for 12 to 15 minutes, or until the vegetables are completely tender","Remove from heat and remove the bay leaves. Either using an immersion blender or a standing blender, purée the soup mixture until completely smooth","Slowly add the grated cheddar cheese, continuing to purée the soup as you add the cheese, until completely blended. Stir in the Worcestershire sauce"],
+        "recipeAuthor":"User",
+        "ratings":"5/5",
+        "tags":["soup","sides"]
+    }
+]
