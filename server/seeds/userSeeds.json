@@ -2,7 +2,5 @@
     {
         "username":"UserTest",
         "email":"test@test.com",
-        "password":"AnotherTest",
-        "thoughts":"None"
-    }
+        "password":"AnotherTest"    }
 ]
