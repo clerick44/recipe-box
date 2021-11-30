@@ -26,9 +26,57 @@
     -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />  
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <title>Tech Thoughts</title>
+    <title>Recipe Box</title>
+    <link rel="stylesheet" type="text/css" href=".public/style.css" />
   </head>
   <body>
+
+    <header class="main-header">
+      <img src="Solved\assets\images\cooking image.jpg">
+      <h1>NOT YOUR GRANDMA'S RECIPE BOOK</h1>
+    </header>
+
+    <nav>
+      <button href="#" class="navHome">Home</button>
+      <button href="#" class="navAllRecipes">All My Recipes</button>
+      <button href="#" class="navNewRecipe">Add New Recipes</button>
+      <button href="#" class="navFaveRecipes">Favorite Recipes</button>
+    </nav>
+
+    <div class=recipeTagSearch>
+      <form action="/form/submit" method="GET"> 
+        <input type="text" name="text" class="search" placeholder="Search Recipe Tags Here!">
+        <input type="submit" name="submit" class="submit" value="Find Recipes">
+      </form>
+    </div>
+
+    <main>
+      <section class="card">
+        <header>Recipe 1</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+      <section class="card">
+        <header>Recipe 2</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+      <section class="card">
+        <header>Recipe 3</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+      <section class="card">
+        <header>Recipe 4</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+      <section class="card">
+        <header>Recipe 5</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+      <section class="card">
+        <header>Recipe 6</header>
+        <p>Recipe Card Goes Here</p>
+      </section>
+
+      
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
