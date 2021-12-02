@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    background-image: "public\images\recipe_cards_background.jpg";
+    background-repeat: repeat;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    padding: 5px;
+    background: #1A4687; 
+    color: #F1E9DA;
+}
+
+header {
+    background-image: "public\images\cooking_image.jpg";
+}
+
+h1 {
+    justify-content: center;
+    text-align: center; 
+    color:#F1E9DA;;
+    padding: 60px;
+}
+
+.navHome {
+    background: #1A4687; 
+    color: #F1E9DA; 
+    padding: 5px;
+}
+
+.navAllRecipes {
+    background: #1A4687; 
+    color: #F1E9DA; 
+    padding: 5px;
+}
+
+.navNewRecipe {
+    background: #1A4687; 
+    color: #F1E9DA;
+    padding: 5px; 
+}
+
+.navFaveRecipes{
+    background: #1A4687; 
+    color: #F1E9DA; 
+    padding: 5px;
+}
+
+.navAllRecipes:hover {
+    background:#F44830;
+    color: #46E8EA;
+    padding: 5px;
+}
+
+.navNewRecipe:hover {
+    background: #F44830;
+    color: #46E8EA;
+    padding: 5px;
+}
+
+.navFaveRecipes:hover {
+    background: #F44830;
+    color: #46E8EA;
+    padding: 5px;
+}
+
+.navHome:hover {
+    background: #F44830;
+    color: #46E8EA;
+    padding: 5px;
+}
+
+.recipeTagSearch {
+    float: left;
+    background: #1A4687;
+    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 100%;
+}
+
+.card {
+    flex: 1 0 0;
+    padding: 20px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    background: #F1E9DA;
+}
+
+.card header {
+    padding: 20px;
+    background: #1A4687;    
+    color: #F1E9DA; 
+}
