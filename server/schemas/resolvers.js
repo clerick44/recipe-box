@@ -1,8 +1,13 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Thought } = require("../models");
+const { User, Thought, Recipes } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
+    Query: {
+      allRecipes: async () => {
+        return await Recipes.find({});
+      }
+    },
   //   Query: {
   //     users: async () => {
   //       return User.find().populate('thoughts');
