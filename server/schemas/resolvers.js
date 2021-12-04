@@ -4,22 +4,18 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
     Query: {
-      // me: async (parent, args, context) => {
-      //     const userInfo = await User.findOne({ _id: context.user._id }).populate('book');
-      //     return userInfo;
-      //},
       
       //query to show all recipes
       allRecipes: async () => {
         return await Recipes.find({});
       },
       //query to show one recipe based in user id
-      oneRecipe: async (parent, args, context) => {
-       if(context.user){
-          const recipeInfo = await User.findOne({_id: context.user._id}).populate('Recipes')
+      oneRecipe: async (parent, {recipeId}, context) => {
+      //  if(context.user){
+          const recipeInfo = await Recipes.findOne({_id: recipeId})
           return recipeInfo;
-        }
-        throw new AuthenticationError("You need to be logged in");
+        // }
+        // throw new AuthenticationError("You need to be logged in");
       },
       //query to show all users and populate recipes
       allUsers: async () => {
