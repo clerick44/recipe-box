@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import "./header.css";
 
-const Header = () => {
+const Header = (props) => {
+  const { currentPage, setCurrentPage } = props;
+  const [clicked, setClicked] = useState(false);
+
+  const openMenu = (e) => {
+    setClicked(!clicked);
+    console.log("event ", e);
+  };
+
   return (
     <header class="main-header">
       <h1>NOT YOUR GRANDMA'S RECIPE BOOK</h1>
@@ -18,14 +27,13 @@ const Header = () => {
           Favorite Recipes
         </button>
       </nav>
-      
+
       {/* <div class="recipeTagSearch">
          <form action="/form/submit" method="GET"> 
             <input type="text" name="text" class="search" placeholder="Search Recipe Tags Here!">
             <input type="submit" name="submit" class="submit" value="Find Recipes">
          </form>
       </div */}
-
     </header>
   );
 };

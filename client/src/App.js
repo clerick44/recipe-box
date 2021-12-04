@@ -8,11 +8,14 @@ import {
 import { setContext } from "@apollo/client/link/context";
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 
-// import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Home from "./components/Home/Home";
+import Signup from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import RecipeCard from "./components/RecipeCard/RecipeCard";
+import Recipes from "./components/Recipes/Recipes";
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -38,13 +41,34 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const [currentPage, setCurrentPage] = useState("Home");
+
+const renderPage = () => {
+  console.log("************** in RENDERPAGE ************");
+  if (currentPage === "Home") {
+    return <Home />;
+  }
+  if (currentPage === "Contact") {
+    return <RecipeCard />;
+  }
+  if (currentPage === "Portfolio") {
+    return <Signup />;
+  }
+  if (currentPage === "Resume") {
+    return <Login />;
+  }
+  if (currentPage === "Recipes") {
+    return <Recipes />;
+  }
+  return <Random />;
+};
+
 function App() {
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
-        <div className="container">
-        </div>
+        <div className="container"> {renderPage()}</div>
         <Footer />
       </div>
     </ApolloProvider>
