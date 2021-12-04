@@ -5,29 +5,29 @@ import { useForm, Controller } from "react-hook-form";
 
 const recipeCard = React.useRef(defaultRecipeValues);
 
-React.useEffect(() => {
-    api.get<Recipe>('recipeHeader, recipeIngredients, recipeDirections').then(
-    (response) => {
-        const userRecipe = response.data;
-        setRecipe(userRecipe);
-    },
-    error => {
-        console.log(error);
-    }
-    )
-},
+// React.useEffect(() => {
+//     api.get<Recipe>('recipeHeader, recipeIngredients, recipeDirections').then(
+//     (response) => {
+//         const userRecipe = response.data;
+//         setRecipe(userRecipe);
+//     },
+//     error => {
+//         console.log(error);
+//     }
+//     )
+// },
 
-);
+// );
 
-React.useEffect(() => {
-    recipeCard.current = Recipe;
-}, 
+// React.useEffect(() => {
+//     recipeCard.current = Recipe;
+// }, 
 
-[Recipe];
+// [Recipe];
 
-render( useForm<Client>({
-    defaultValues: recipeCard.current ? recipeCard.current : defaultRecipeValues,
-    reValidateMode: 'onChange',
-    mode: 'onChange',
-    validationSchema: clientSchema,
-}));
+// render( useForm<Client>({
+//     defaultValues: recipeCard.current ? recipeCard.current : defaultRecipeValues,
+//     reValidateMode: 'onChange',
+//     mode: 'onChange',
+//     validationSchema: clientSchema,
+// }));
