@@ -60,7 +60,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     saveRecipe(recipeData: savedRecipesInfo!):User
     removeRecipe(recipeId: String!): User
-    addRecipe(recipeData: String!): Recipe
+    addRecipe(recipeData: String!): Recipes
     # addThought(thoughtText: String!): Thought
     # addComment(thoughtId: ID!, commentText: String!): Thought
     # removeThought(thoughtId: ID!): Thought
