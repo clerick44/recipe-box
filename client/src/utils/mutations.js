@@ -24,6 +24,24 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_RECIPE = gql`
+  mutation addRecipe($recipeData: String!) {
+    addRecipe(thoughtText: $recipeData) {
+      _id
+      recipeName
+      servings
+      cookTime
+      prepTime
+      specialTools
+      ingredients
+      instructions
+      recipeAuthor
+      ratings
+    }
+  }
+`;
+
+
 // export const ADD_THOUGHT = gql`
 //   mutation addThought($thoughtText: String!) {
 //     addThought(thoughtText: $thoughtText) {

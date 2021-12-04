@@ -1,5 +1,82 @@
 import { gql } from "@apollo/client";
 
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      savedRecipes {
+        recipeId
+        recipeName
+        servings
+        cookTime
+        prepTime
+        specialTools
+        ingredients
+        instructions
+        recipeAuthor
+        ratings
+      }
+    }
+  }
+`;
+
+export const QUERY_RECIPES = gql`
+  query getRecipes {
+        recipeId
+        recipeName
+        servings
+        cookTime
+        prepTime
+        specialTools
+        ingredients
+        instructions
+        recipeAuthor
+        ratings
+      }
+`;
+
+export const QUERY_SINGLE_RECIPE = gql`
+  query getSingleRecipe($recipeId: ID!) {
+    recipe(recipeId: $recipeId) {
+        recipeId
+        recipeName
+        servings
+        cookTime
+        prepTime
+        specialTools
+        ingredients
+        instructions
+        recipeAuthor
+        ratings
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      savedRecipes {
+        recipeId
+        recipeName
+        servings
+        cookTime
+        prepTime
+        specialTools
+        ingredients
+        instructions
+        recipeAuthor
+        ratings
+      }
+    }
+  }
+`;
+
 // export const QUERY_USER = gql`
 //   query user($username: String!) {
 //     user(username: $username) {
