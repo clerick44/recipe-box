@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
 
@@ -15,12 +16,14 @@ const Footer = () => {
             role="img"
             aria-label="heart"
             aria-hidden="false"
-          >
-            :heart:
-          </span>{" "}
+
+        >
+        ❤️
+        </span>{' '}
         </h4>
-      </div>
+    </div>
     </footer>
-  );
+);
 };
+
 export default Footer;
