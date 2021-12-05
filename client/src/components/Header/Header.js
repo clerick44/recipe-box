@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./header.css";
+import { NavLinks } from "./NavLinks";
 
 const Header = (props) => {
   const { currentPage, setCurrentPage } = props;
@@ -9,31 +10,32 @@ const Header = (props) => {
     setClicked(!clicked);
     console.log("event ", e);
   };
-
   return (
-    <header class="main-header">
-      <h1>NOT YOUR GRANDMA'S RECIPE BOOK</h1>
-      <nav>
-        <button href="#" class="navHome">
-          Home
-        </button>
-        <button href="#" class="navAllRecipes">
-          All My Recipes
-        </button>
-        <button href="#" class="navNewRecipe">
-          Add New Recipes
-        </button>
-        <button href="#" class="navFaveRecipes">
-          Favorite Recipes
-        </button>
+    <header>
+      <nav className="navbar">
+        <h1 className="headerTitle"> NOT YOUR GRANDMA'S RECIPE BOOK</h1>
+        <div className="menuIcon" onClick={openMenu}>
+          <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+        </div>
+        <ul className={clicked ? "navMenu active" : "navMenu"}>
+          {NavLinks.map((link, index) => {
+            return (
+              <li onClick={() => setCurrentPage(link.title)} key={index}>
+                <a
+                  className={
+                    link.className +
+                    " " +
+                    `${currentPage === link.title && "navLinkActive"}`
+                  }
+                  href={link.url}
+                >
+                  {link.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </nav>
-
-      {/* <div class="recipeTagSearch">
-         <form action="/form/submit" method="GET"> 
-            <input type="text" name="text" class="search" placeholder="Search Recipe Tags Here!">
-            <input type="submit" name="submit" class="submit" value="Find Recipes">
-         </form>
-      </div */}
     </header>
   );
 };

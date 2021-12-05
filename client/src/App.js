@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,7 +15,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
 import Recipes from "./components/Recipes/Recipes";
-
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,33 +40,29 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const [currentPage, setCurrentPage] = useState("Home");
-
-const renderPage = () => {
-  console.log("************** in RENDERPAGE ************");
-  if (currentPage === "Home") {
-    return <Home />;
-  }
-  if (currentPage === "Contact") {
-    return <RecipeCard />;
-  }
-  if (currentPage === "Portfolio") {
-    return <Signup />;
-  }
-  if (currentPage === "Resume") {
-    return <Login />;
-  }
-  if (currentPage === "Recipes") {
-    return <Recipes />;
-  }
-  return <Random />;
-};
-
 function App() {
+
+  const [currentPage, setCurrentPage] = useState("Home");
+
+  const renderPage = () => {
+    console.log("************** in RENDERPAGE ************");
+    if (currentPage === "Home") {
+      return <Home />;
+    }
+    if (currentPage === "My Recipes") {
+      return <RecipeCard />;
+    }
+    if (currentPage === "Create Recipe") {
+      return <Signup />;
+    }
+    // create recipe goes here
+    // return <Random />;
+  };
+
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
+        <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
         <div className="container"> {renderPage()}</div>
         <Footer />
       </div>
