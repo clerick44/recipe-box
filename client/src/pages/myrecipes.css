@@ -1,0 +1,8 @@
+#myRecipesWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#sideBar {
+  background-color: aqua;
+}
