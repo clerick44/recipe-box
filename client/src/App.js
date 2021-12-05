@@ -55,6 +55,9 @@ function App() {
     if (currentPage === "Create Recipe") {
       return <Signup />;
     }
+    if (currentPage === "login"){
+      return <Login />
+    }
     // create recipe goes here
     // return <Random />;
   };
