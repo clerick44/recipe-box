@@ -1,84 +1,80 @@
-import React, { Component } from "react";
-// import { Text, View, TextInput, Button, Alert } from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
+import ReactDOM from "react-dom";
+
+//import "./recipeDirections.css";
 
 export default function App() {
-const { control, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-        recipeDirections: '',
+const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+} = useForm();
+const directions = useRef({});
+const [arr, setArr] = useRef({});
+const addDirection = () => {
+    setArr(s => {
+    return [
+        ...s,
+        {
+        type: "text",
+        value: ""
+        }
+    ];
+    });
+};
+
+const handleChange = e => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setArr(s => {
+    const newArr = s.slice();
+    newArr[index].value = e.target.value;
+
+    return newArr;
+    });
+};
+
+directions.current = watch("Directions", "");
+addDirection.current = watch("Add Another Direction", "");
+
+const onSubmit = async (data) => {
+    if (directions.current.length === 0) {
+    alert("You must specify a direction");
+    return;
     }
-});
-const onSubmit = data => console.log(data);
 
 return (
-    <h1>Recipe Directions Placeholder</h1>
-//     <View>
-//     <Controller
-//         control={control}
+    <form onSubmit={(e) => e.preventDefault()}>
+    <label>Directions</label>
+    <input {...register("Direction")} />
+    {errors.directions && <p>{errors.directions.message}</p>}
 
-//         render={({ field: { onChange, onBlur, value } }) => (
-//     <TextInput
-//             style={styles.input}
-//             onBlur={onBlur}
-//             onChangeText={onChange}
-//             value={value}
-//     />
-//         )}
-//         name="recipeDirections"
-//     />
+    <div>
+    <button onClick={addDirection}>Add Another Direction</button>
+    {arr.map((item, i) => {
+        return (
+        <input
+            onChange={handleChange}
+            value={item.value}
+            id={i}
+            type={item.type}
+            size="40"
+        />
+        );
+    })}
+    </div>
 
-// <Button title="Finish" onPress={handleSubmit(onSubmit)} />
-//         </View>
+    <label>Finish Recipe</label>
+    <input {...register("New Direction")} />
+    {errors.addDirection && <p>{errors.addDirection.message}</p>}
+
+    <input type="submit" onClick={handleSubmit(onSubmit)} />
+    </form>
 );
-
-// class listOfDirections extends Component {
-//     state = {
-//         directions: ['']
-//     }
-
-//     handleText = i => e => {
-//         let directions = [...this.state.recipeDirections]
-//         directions[i] = e.target.value
-//         this.setState({
-//         directions
-//     })
-// }
-
-//     handleDelete = i => e => {
-//         e.preventDefault()
-//         let directions = [
-//         ...this.state.recipeDirections.slice(0, i),
-//         ...this.state.recipeDirections.slice(i + 1)
-//     ]
-//     this.setState({
-//     directions
-//     })
-// }
-
-//     addDirection = e => {
-//     e.preventDefault()
-//     let directions = this.state.recipeDirections.concat([''])
-//     this.setState({
-//         directions
-//     })
-// }
-
-//     render() {
-//         return (
-//         <Fragment>
-//         {this.state.questions.map((directions, index) => (
-//             <span key={index}>
-//             <input
-//                 type="text"
-//                 onChange={this.handleText(index)}
-//                 value={directions}
-//             />
-//             <button onClick={this.handleDelete(index)}>X</button>
-//             </span>
-//         ))}
-//         <button onClick={this.addDirection}>Add New Step</button>
-//         </Fragment>
-//     )
-// }
-// }
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement)};

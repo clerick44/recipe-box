@@ -1,87 +1,79 @@
-import React, { Component } from "react";
-// import { Text, View, TextInput, Button, Alert } from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
+import ReactDOM from "react-dom";
+
+//import "./recipeIngredients.css";
 
 export default function App() {
-const { control, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-        recipeIngredients: '',
+const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+} = useForm();
+const ingredients = useRef({});
+const [arr, setArr] = useRef({});
+const addIngredient = () => {
+    setArr(s => {
+    return [
+        ...s,
+        {
+        type: "text",
+        value: ""
+        }
+    ];
+    });
+};
+
+const handleChange = e => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setArr(s => {
+    const newArr = s.slice();
+    newArr[index].value = e.target.value;
+
+    return newArr;
+    });
+};
+
+ingredients.current = watch("Ingredients", "");
+addIngredient.current = watch("Add Another Ingredient", "");
+
+const onSubmit = async (data) => {
+    if (ingredients.current.length === 0) {
+    alert("You must specify an ingredient");
+    return;
     }
-});
-const onSubmit = data => console.log(data);
 
 return (
-    <h1>Recipe Ingredients Place Holder</h1>
-//     <View>
-//     <Controller
-//         control={control}
+    <form onSubmit={(e) => e.preventDefault()}>
+    <label>Ingredients</label>
+    <input {...register("Ingredients")} />
+    {errors.ingredients && <p>{errors.ingredients.message}</p>}
 
-//         render={({ field: { onChange, onBlur, value } }) => (
-//     <TextInput
-//             style={styles.input}
-//             onBlur={onBlur}
-//             onChangeText={onChange}
-//             value={value}
-//     />
-//         )}
-//         name="recipeIngredients"
-//     />
+    <div>
+    <button onClick={addIngredient}>Add Another Ingredient</button>
+    {arr.map((item, i) => {
+        return (
+        <input
+            onChange={handleChange}
+            value={item.value}
+            id={i}
+            type={item.type}
+        />
+        );
+    })}
+    </div>
 
-// <Button title="Next" onPress={handleSubmit(onSubmit)} />
-//         </View>
+    <label>Move to Directions</label>
+    <input {...register("New Ingredients")} />
+    {errors.addIngredient && <p>{errors.addIngredient.message}</p>}
+
+    <input type="submit" onClick={handleSubmit(onSubmit)} />
+    </form>
 );
-
-// class listOfIngredients extends Component {
-//     state = {
-//         ingredients: ['']
-//     }
-
-//     handleText = i => e => {
-//         let ingredients = [...this.state.recipeIngredients]
-//         ingredients[i] = e.target.value
-//         this.setState({
-//         ingredients
-//     })
-// }
-
-//     handleDelete = i => e => {
-//         e.preventDefault()
-//         let ingredients = [
-//         ...this.state.recipeIngredients.slice(0, i),
-//         ...this.state.recipeIngredients.slice(i + 1)
-//     ]
-//     this.setState({
-//     ingredients
-//     })
-// }
-
-//     addIngredient = e => {
-//     e.preventDefault()
-//     let ingredients = this.state.recipeIngredients.concat([''])
-//     this.setState({
-//         ingredients
-//     })
-// }
-
-//     render() {
-//         return (
-//         <Fragment>
-//         {this.state.questions.map((ingredients, index) => (
-//             <span key={index}>
-//             <input
-//                 type="text"
-//                 onChange={this.handleText(index)}
-//                 value={ingredients}
-//             />
-//             <button onClick={this.handleDelete(index)}>X</button>
-//             </span>
-//         ))}
-//         <button onClick={this.addIngredient}>Add New Ingredient</button>
-//         </Fragment>
-//     )
-// }
-// }
-
-
-
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement)};
