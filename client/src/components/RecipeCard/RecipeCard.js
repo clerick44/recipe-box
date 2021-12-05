@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TextInput, Button, Alert } from "react-native";
+// import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import "./recipeCard.css";
 
@@ -38,7 +38,7 @@ import RecipeDirections from "../RecipeDirections/Recipedirections";
 //     validationSchema: clientSchema,
 // }));
 
-const recipeCard = () => {
+const RecipeCard = () => {
     return(
   <div id="recipeCardContainer">
     <div id="recipeHeader">
