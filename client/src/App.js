@@ -15,6 +15,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
 import Recipes from "./components/Recipes/Recipes";
+import MyRecipes from "./pages/MyRecipes";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,7 +42,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-
   const [currentPage, setCurrentPage] = useState("Home");
 
   const renderPage = () => {
@@ -50,7 +50,7 @@ function App() {
       return <Home />;
     }
     if (currentPage === "My Recipes") {
-      return <RecipeCard />;
+      return <MyRecipes />;
     }
     if (currentPage === "Create Recipe") {
       return <Signup />;
