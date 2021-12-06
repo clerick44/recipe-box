@@ -48,7 +48,7 @@ const Signup = () => {
             {data ? (
               <p>
                 Success! You may now  {''}
-                <Link to="../Home/Home.js">open your Recipe Box!.</Link>
+                {/* <Link to="../Home/Home.js">open your Recipe Box!.</Link> */}
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
