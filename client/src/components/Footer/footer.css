@@ -1,6 +1,6 @@
 footer {
     width: 100%;
-    height: 66px;
+    height: 8vh;
     background-color: cadetblue;
     display: flex;
     flex-direction: column;
