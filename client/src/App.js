@@ -19,7 +19,7 @@ import Footer from "./components/Footer/Footer";
 import MyRecipes from "./pages/MyRecipes";
 
 import UserProfile from "./components/UserProfile/UserProfile"
-//import NewRecipe from ".components/RecipeHeader/RecipeHeader.js"
+import NewRecipe from "./components/NewRecipeForm/NewRecipeForm"
 //import UserProfile from "./components/UserProfile/UserProfile"
 
 
@@ -59,7 +59,7 @@ function App() {
       return <MyRecipes />;
     }
     if (currentPage === "Create Recipe") {
-      return <MyRecipes />;
+      return <NewRecipe />;
     }
     if (currentPage === "login"){
       return <UserProfile />
