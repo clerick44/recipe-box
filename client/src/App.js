@@ -18,8 +18,10 @@ import Footer from "./components/Footer/Footer";
 // import Recipes from "./components/Recipes/Recipes";
 import MyRecipes from "./pages/MyRecipes";
 
-import UserProfile from "./components/UserProfile/UserProfile";
-//import NewRecipe from ".components/RecipeHeader/RecipeHeader.js"
+
+import UserProfile from "./components/UserProfile/UserProfile"
+import NewRecipe from "./components/NewRecipeForm/NewRecipeForm"
+
 //import UserProfile from "./components/UserProfile/UserProfile"
 
 // Construct our main GraphQL API endpoint
@@ -58,7 +60,7 @@ function App() {
       return <MyRecipes />;
     }
     if (currentPage === "Create Recipe") {
-      return <MyRecipes />;
+      return <NewRecipe />;
     }
     if (currentPage === "Login") {
       return <UserProfile />;
