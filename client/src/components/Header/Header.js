@@ -27,7 +27,7 @@ const Header = (props) => {
                     " " +
                     `${currentPage === link.title && "navLinkActive"}`
                   }
-                  href={link.url}
+                  // href={link.url}
                 >
                   {link.title}
                 </a>

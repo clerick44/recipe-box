@@ -1,43 +1,51 @@
-import React, { useState } from 'react';
-import styled from "styled-components";
-import SignUp from "../SignUp/SignUp"
-import Login from "../Login/Login"
-
+import React, { useState } from "react";
+// import styled from "styled-components";
+import SignUp from "../SignUp/SignUp";
+import Login from "../Login/Login";
 
 const UserProfile = (props) => {
-function Login() {
-    const [currentPage, setCurrentPage] = useState("Login");
+//   const ButtonGroup = styled.div;
+//   const Button = styled.button;
 
-    const renderLoginPage = () => {
+//   function Login() {
+//     const [currentPage, setCurrentPage] = useState("Login");
 
-    if (currentPage === "Login") {
-        return <SignUp />;
-    }
-}
-}
+//     const renderLoginPage = () => {
+//       if (currentPage === "Login") {
+//         return <SignUp />;
+//       }
+//     };
+//   }
 
-function SignUp () {
-    const [currentPage, setCurrentPage] = useState("SignUp");
+//   function SignUp() {
+//     const [currentPage, setCurrentPage] = useState("SignUp");
 
-    const renderSignUpPage = () => {
+//     const renderSignUpPage = () => {
+//       if (currentPage === "SignUp") {
+//         return <Login />;
+//       }
+//     };
+//   }
+  return (
+    <>
+      <div>
+        <Login />
+      </div>
+      <div>
+        <SignUp />
+      </div>
+    </>
+  );
+};
 
-    if (currentPage === "SignUp") {
-        return <Login />;
-    }  
-}
-}
-}
+// const ButtonGroup = styled.div;
+// const Button = styled.button;
 
-const ButtonGroup = styled.div;
-const Button = styled.button
+export default UserProfile;
 
-export default UserProfile
-
-
-<
-<ButtonGroup>
-    <Button onClick={SignUp}> Sign Up </Button>
-    <Button onClick={Login}> Login </Button>
-</ButtonGroup>
-
-
+// (
+//   <ButtonGroup>
+//     <Button onClick={SignUp}> Sign Up </Button>
+//     <Button onClick={Login}> Login </Button>
+//   </ButtonGroup>
+// );
