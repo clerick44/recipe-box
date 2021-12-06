@@ -28,11 +28,14 @@ function SignUp () {
 }
 
 const ButtonGroup = styled.div;
+const Button = styled.button
 
 export default UserProfile
 
 
+<
 <ButtonGroup>
-    <Button onClick={SignUpFunct}> Sign Up </Button>;
-    <Button onClick={LoginFunct}> Login </Button>
+    <Button onClick={SignUp}> Sign Up </Button>
+    <Button onClick={Login}> Login </Button>
 </ButtonGroup>
+
