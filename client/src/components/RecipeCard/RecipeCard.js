@@ -7,7 +7,10 @@ import RecipeHeader from "../RecipeHeader/RecipeHeader";
 import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import RecipeDirections from "../RecipeDirections/Recipedirections";
 
-const RecipeCard = () => {
+const RecipeCard = (props) => {
+  console.log(props);
+  const { currentRecipe } = props;
+
   return (
     <div id="recipeCardContainer">
       <div id="recipeHeader">
