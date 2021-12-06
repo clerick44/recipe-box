@@ -1,21 +1,43 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import styled from "styled-components";
+import SignUp from "../SignUp/SignUp"
+import Login from "../Login/Login"
 
-import SignUp from "../SignUp/SignUp";
-import Login from "../Login/Login";
 
-const UserProfile = () => {
-    return(<h1>User Profile Place Holder</h1>)
-    // addEventListener.
+const UserProfile = (props) => {
+function Login() {
+    const [currentPage, setCurrentPage] = useState("Login");
 
-// {/* <Switch>
-//     {/* <Route path='/SignUp' >
-//         <SignUp />
-//     </Route>
-//     <Route path='/Login' >
-//         <Login />
-//     </Route> */}
-// </Switch>  */}
+    const renderLoginPage = () => {
+
+    if (currentPage === "Login") {
+        return <SignUp />;
+    }
+}
 }
 
-export default UserProfile;
+function SignUp () {
+    const [currentPage, setCurrentPage] = useState("SignUp");
+
+    const renderSignUpPage = () => {
+
+    if (currentPage === "SignUp") {
+        return <Login />;
+    }  
+}
+}
+}
+
+const ButtonGroup = styled.div;
+const Button = styled.button
+
+export default UserProfile
+
+
+<
+<ButtonGroup>
+    <Button onClick={SignUp}> Sign Up </Button>
+    <Button onClick={Login}> Login </Button>
+</ButtonGroup>
+
+
