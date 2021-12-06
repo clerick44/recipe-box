@@ -12,16 +12,21 @@ const SideBar = (props) => {
     return <h3>No Recipes Yet</h3>;
   }
 
-  <ul id="recipeList">
-    {recipes.map((recipe, index) => {
-      return (
-        <li onClick={() => setCurrentRecipe(recipe)} key={index}>
-          {recipe.recipeName}
-        </li>
-      );
-    })}
-  </ul>;
-  return <h3>Sidebar place Holder</h3>;
+  return (
+    <>
+      <h3>My Recipes</h3>
+      <ul id="recipeList">
+        {recipes.map((recipe, index) => {
+          return (
+            <li onClick={() => setCurrentRecipe(recipe)} key={index}>
+              {recipe.recipeName}
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+  // return <h3>Sidebar place Holder</h3>;
 };
 
 export default SideBar;
