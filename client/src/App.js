@@ -16,6 +16,8 @@ import Footer from "./components/Footer/Footer";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
 import Recipes from "./components/Recipes/Recipes";
 import MyRecipes from "./pages/MyRecipes";
+import NewRecipe from ".components/RecipeHeader/RecipeHeader.js"
+//import UserProfile from "./components/UserProfile/UserProfile"
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -53,7 +55,7 @@ function App() {
       return <MyRecipes />;
     }
     if (currentPage === "Create Recipe") {
-      return <Signup />;
+      return <NewRecipe />;
     }
     if (currentPage === "login"){
       return <Login />
