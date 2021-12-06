@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
-import MyRecipes from "../Home/Home"
+import MyRecipes from "../Home/Home";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -49,8 +49,8 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Welcome back! {" "}
-                <Link to="../Home/Home.js">Here are your Recipes!</Link>
+                Welcome back!{" "}
+                {/* <Link to="../Home/Home.js">Here are your Recipes!</Link> */}
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

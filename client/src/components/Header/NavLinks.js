@@ -1,8 +1,8 @@
 export const NavLinks = [
-  {
-    title: "Home",
-    className: "navLinks",
-  },
+  // {
+  //   title: "Home",
+  //   className: "navLinks",
+  // },
   {
     title: "My Recipes",
     className: "navLinks",
@@ -12,7 +12,7 @@ export const NavLinks = [
     className: "navLinks",
   },
   {
-    title: "Sign In / Sign Up",
+    title: "Login",
     className: "navLinks",
   },
 ];
