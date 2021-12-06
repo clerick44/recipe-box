@@ -1,19 +1,38 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import styled from "styled-components";
+import SignUp from "../SignUp/SignUp"
+import Login from "../Login/Login"
 
-import SignUp from "/.component/SignUp/SignUp.js";
-import Login from "/.component/Login/Login.js";
+const UserProfile = (props) => {
+function Login() {
+    const [currentPage, setCurrentPage] = useState("Login");
 
-const userProfile => {
-    addEventListener.
+    const renderLoginPage = () => {
 
-// {/* <Switch>
-//     {/* <Route path='/SignUp' >
-//         <SignUp />
-//     </Route>
-//     <Route path='/Login' >
-//         <Login />
-//     </Route> */}
-// </Switch>  */}
+    if (currentPage === "Login") {
+        return <SignUp />;
+    }
+}
+}
 
-export default UserProfile;
+function SignUp () {
+    const [currentPage, setCurrentPage] = useState("SignUp");
+
+    const renderSignUpPage = () => {
+
+    if (currentPage === "SignUp") {
+        return <Login />;
+    }  
+}
+}
+}
+
+const ButtonGroup = styled.div;
+
+export default UserProfile
+
+
+<ButtonGroup>
+    <Button onClick={SignUpFunct}> Sign Up </Button>;
+    <Button onClick={LoginFunct}> Login </Button>
+</ButtonGroup>
