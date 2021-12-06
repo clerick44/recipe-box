@@ -2,6 +2,7 @@
 
 // import { useForm, Controller } from "react-hook-form";
 
+
 // export default function App() {
 // const { control, handleSubmit, formState: { errors } } = useForm({
 //     defaultValues: {
@@ -18,6 +19,7 @@
 
 // <div>
 // function namerecipe App() {
+
 // const {
 //     register,
 //     formState: { errors },
@@ -333,4 +335,11 @@
 // </div>
 
 // const rootElement = document.getElementById("root");
+
 // ReactDOM.render(<App />, rootElement)};
+
+const NewRecipe = () => {
+  return <h1>New Recipe Place Holder</h1>;
+};
+
+export default NewRecipe;

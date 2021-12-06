@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SignUp from "../SignUp/SignUp"
 import Login from "../Login/Login"
 
+
 const UserProfile = (props) => {
 function Login() {
     const [currentPage, setCurrentPage] = useState("Login");
@@ -38,4 +39,5 @@ export default UserProfile
     <Button onClick={SignUp}> Sign Up </Button>
     <Button onClick={Login}> Login </Button>
 </ButtonGroup>
+
 

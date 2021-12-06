@@ -9,16 +9,19 @@ import { setContext } from "@apollo/client/link/context";
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from "./components/Home/Home";
-//import Signup from "./components/SignUp/SignUp";
-//import Login from "./components/Login/Login";
+
+// import Signup from "./components/SignUp/SignUp";
+// import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import RecipeCard from "./components/RecipeCard/RecipeCard";
-import Recipes from "./components/Recipes/Recipes";
+// import RecipeCard from "./components/RecipeCard/RecipeCard";
+// import Recipes from "./components/Recipes/Recipes";
 import MyRecipes from "./pages/MyRecipes";
+
 import UserProfile from "./components/UserProfile/UserProfile"
 //import NewRecipe from ".components/RecipeHeader/RecipeHeader.js"
 //import UserProfile from "./components/UserProfile/UserProfile"
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -60,6 +63,7 @@ function App() {
     }
     if (currentPage === "login"){
       return <UserProfile />
+
     }
     // create recipe goes here
     // return <Random />;
