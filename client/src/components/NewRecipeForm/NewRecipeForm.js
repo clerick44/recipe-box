@@ -335,4 +335,8 @@ import { useForm, Controller } from "react-hook-form";
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<App />, rootElement)};
 
+const NewRecipe = () => {
+  return <h1>New Recipe Place Holder</h1>;
+};
+
 export default NewRecipe;
