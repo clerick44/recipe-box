@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import MyRecipes from '../Home/Home';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -46,8 +47,8 @@ const Signup = () => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                Success! You may now  {''}
+                <Link to="../Home/Home.js">open your Recipe Box!.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

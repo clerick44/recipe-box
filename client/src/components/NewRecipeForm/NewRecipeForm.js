@@ -1,6 +1,7 @@
-import React from "react";
+// import React from "react";
 
-import { useForm, Controller } from "react-hook-form";
+// import { useForm, Controller } from "react-hook-form";
+
 
 // export default function App() {
 // const { control, handleSubmit, formState: { errors } } = useForm({
@@ -17,7 +18,8 @@ import { useForm, Controller } from "react-hook-form";
 // const onSubmit = data => console.log(data);
 
 // <div>
-// export default function App() {
+// function namerecipe App() {
+
 // const {
 //     register,
 //     formState: { errors },
@@ -333,6 +335,7 @@ import { useForm, Controller } from "react-hook-form";
 // </div>
 
 // const rootElement = document.getElementById("root");
+
 // ReactDOM.render(<App />, rootElement)};
 
 const NewRecipe = () => {
