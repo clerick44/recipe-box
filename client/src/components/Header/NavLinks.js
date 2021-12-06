@@ -12,7 +12,7 @@ export const NavLinks = [
     className: "navLinks",
   },
   {
-    title: "Sign In/ Sign Up",
+    title: "Sign In / Sign Up",
     className: "navLinks",
   },
 ];

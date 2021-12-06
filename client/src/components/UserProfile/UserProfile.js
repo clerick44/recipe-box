@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import SignUp from "/.component/SignUp/SignUp.js";
-import Login from "/.component/Login/Login.js";
+import SignUp from "../SignUp/SignUp";
+import Login from "../Login/Login";
 
-const userProfile => {
-    addEventListener.
+const UserProfile = () => {
+    return(<h1>User Profile Place Holder</h1>)
+    // addEventListener.
 
 // {/* <Switch>
 //     {/* <Route path='/SignUp' >
@@ -15,5 +16,6 @@ const userProfile => {
 //         <Login />
 //     </Route> */}
 // </Switch>  */}
+}
 
 export default UserProfile;
