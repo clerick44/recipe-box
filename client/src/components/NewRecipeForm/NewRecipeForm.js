@@ -1,345 +1,124 @@
-// import React from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import Header from "..Header/Header"
+import Footer from "../Footer/Footer"
+import "./newRecipeForm.css"
 
-// import { useForm, Controller } from "react-hook-form";
+function newRecipeForm() {
+  const [values, setValues] = useState({
+    recipeName: " ",
+    servings: " ",
+    prepTime: " ",
+    cookTime: " ",
+    specialTools: " ",
+    recipeIngredients: " ",
+    recipeDirections: " ",
+  }); 
 
+  const [submitted, setSubmitted] = useState(false);
 
-// export default function App() {
-// const { control, handleSubmit, formState: { errors } } = useForm({
-//     defaultValues: {
-//         recipeName: '',
-//         prepTime: '',
-//         cookTime: '',
-//         servings: '',
-//         specialTools: '',
-//         recipeIngredients: '',
-//         recipeDirections: '',
-//     }
-// });
-// const onSubmit = data => console.log(data);
+  const handleChange = (e) => {
+    setValues({...values, e.target.value})
+  };
 
-// <div>
-// function namerecipe App() {
+  let addIngredientsFields = () => {
+    this.setState(({
+      formValues: [this.state.formValues, {recipeIngredients: " "}]
+    }))
+  }
 
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const recipeName = useRef({});
-// const [arr, setArr] = useRef({});
-// const setRecipeName = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
+  let addDirectionsFields = () => {
+    this.setState(({
+      formValues: [this.state.formValues, {recipeDirections: " "}]
+    }))
+  }
 
-// const handleChange = e => {
-//     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(values.recipeName && values.servings && values.prepTime && values.cookTime && values.recipeIngredients && recipe.recipeDirections) {
+      setValid(true);
+    }
+    setSubmitted(true);
+  }
 
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
+  const [valid, setValid] = useState(false);
 
-//     return newArr;
-//     });
-// };
+  return (
+    <div>
+      <form>
+     
+        {submitted && valid ? <div className="success-message">Your recipe has been recorded!</div> : null}
+        <input
+        value={values.recipeName}
+        className="form-field"
+        placeholder="Recipe Name"
+        name="recipeName"
+        onChange={handleChange}/>
+        
+        {submitted && !values.recipeName ? <span>Please enter a recipe name.</span> : null}
+      
+        
+        <input
+        value={values.servings}
+        className="form-field"
+        placeholder="Number of Servings"
+        name="servings"
+        onChange={handleChange}/>
+        
+        {submitted && !values.servings ? <span>Please enter a number of servings.</span> : null}
 
-// recipeName.current = watch("Recipe Name", "");
-// }
-// </div>
+        <input
+          value={values.prepTime}
+          className="form-field"
+          placeholder="Prep Time"
+          name="prepTime"
+          onChange={handleChange}/>
+          <span>Please enter a prep time.</span>
 
-// <div>
-// export default function App() {
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const prepTime = useRef({});
-// const [arr, setArr] = useRef({});
-// const setPrepTime = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
+          {submitted && !values.prepTime ? <span>Please enter a prep time.</span> : null}
 
-// const handleChange = e => {
-//     e.preventDefault();
+        <input
+          value={values.cookTime}
+          className="form-field"
+          placeholder="Cooking Time"
+          name="cookTime"
+          onChange={handleChange}/>
+        
+        {submitted && !values.cookTime ? <span>Please enter a cook time.</span> : null}
 
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
+        <input
+          value={values.specialTools}
+          className="form-field"
+          placeholder="Special Tools Used for this Recipe"
+          name="Special Tools"
+          onChange={handleChange}/>
 
-//     return newArr;
-//     });
-// };
+        <input
+          value={values.recipeIngredients}
+          className="form-field"
+          placeholder="Recipe Ingredients"
+          name="recipeIngredients"
+          onChange={handleChange}/>
+        
+        {submitted && !values.recipeIngredients ? <span>Please enter a recipe ingredient.</span> : null}
 
-// prepTime.current = watch("Prep Time", "");
-// }
-// </div>
+        <button className="button add" type="button" onClick={() => this.addIngredientsFields()}> Add Addiotional Ingredient</button>
 
-// <div>
-// export default function App() {
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const cookTIme = useRef({});
-// const [arr, setArr] = useRef({});
-// const setCookTime = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
+        <input
+          value={values.recipeDirections}
+          className="form-field"
+          placeholder="Recipe Directions"
+          name="recipeDirections"
+          onChange={handleChange}/>
+        
+        {submitted && !values.recipeDirections ? <span>Please enter a recipe direction.</span> : null}
 
-// const handleChange = e => {
-//     e.preventDefault();
+        <button className="button add" type="button" onClick={() => this.addDirectionsFields()}>Add Additional Direction</button>
 
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
+        onSubmit={handleSubmit}
 
-//     return newArr;
-//     });
-// };
-
-// cookTime.current = watch("CookTime", "");
-// }
-// </div>
-
-// <div>
-// export default function App() {
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const servings = useRef({});
-// const [arr, setArr] = useRef({});
-// const setServings = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
-
-// const handleChange = e => {
-//     e.preventDefault();
-
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
-
-//     return newArr;
-//     });
-// };
-
-// servings.current = watch("Servings", "");
-// }
-// </div>
-
-// <div>
-// export default function App() {
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const specialTools = useRef({});
-// const [arr, setArr] = useRef({});
-// const setSpecialTools = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
-
-// const handleChange = e => {
-//     e.preventDefault();
-
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
-
-//     return newArr;
-//     });
-// };
-
-// specialTools.current = watch("special Tools Used", "");
-// }
-// </div>
-
-// <div>
-// export default function App() {
-// const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//     watch,
-// } = useForm();
-// const ingredients = useRef({});
-// const [arr, setArr] = useRef({});
-// const addIngredient = () => {
-//     setArr(s => {
-//     return [
-//         ...s,
-//         {
-//         type: "text",
-//         value: ""
-//         }
-//     ];
-//     });
-// };
-
-// const handleChange = e => {
-//     e.preventDefault();
-
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
-
-//     return newArr;
-//     });
-// };
-
-// ingredients.current = watch("Ingredients", "");
-// addIngredient.current = watch("Add Another Ingredient", "");
-
-// const onSubmit = async (data) => {
-//     if (ingredients.current.length === 0) {
-//     alert("You must specify an ingredient");
-//     return;
-//     }
-
-// return (
-//     <form onSubmit={(e) => e.preventDefault()}>
-//     <label>Ingredients</label>
-//     <input {...register("Ingredients")} />
-//     {errors.ingredients && <p>{errors.ingredients.message}</p>}
-
-//     <div>
-//     <button onClick={addIngredient}>Add Another Ingredient</button>
-//     {arr.map((item, i) => {
-//         return (
-//         <input
-//             onChange={handleChange}
-//             value={item.value}
-//             id={i}
-//             type={item.type}
-//         />
-//         );
-//     })}
-//     </div>
-
-//     <label>Move to Directions</label>
-//     <input {...register("New Ingredients")} />
-//     {errors.addIngredient && <p>{errors.addIngredient.message}</p>}
-
-//     <input type="submit" onClick={handleSubmit(onSubmit)} />
-//     </form>
-// );
-// }
-// </div>
-
-// <div>
-// const handleChange = e => {
-//     e.preventDefault();
-
-//     const index = e.target.id;
-//     setArr(s => {
-//     const newArr = s.slice();
-//     newArr[index].value = e.target.value;
-
-//     return newArr;
-//     });
-// };
-
-// directions.current = watch("Directions", "");
-// addDirection.current = watch("Add Another Direction", "");
-
-// const onSubmit = async (data) => {
-//     if (directions.current.length === 0) {
-//     alert("You must specify a direction");
-//     return;
-//     }
-
-// return (
-//     <form onSubmit={(e) => e.preventDefault()}>
-//     <label>Directions</label>
-//     <input {...register("Direction")} />
-//     {errors.directions && <p>{errors.directions.message}</p>}
-
-//     <div>
-//     <button onClick={addDirection}>Add Another Direction</button>
-//     {arr.map((item, i) => {
-//         return (
-//         <input
-//             onChange={handleChange}
-//             value={item.value}
-//             id={i}
-//             type={item.type}
-//             size="40"
-//         />
-//         );
-//     })}
-//     </div>
-
-//     <label>Finish Recipe</label>
-//     <input {...register("New Direction")} />
-//     {errors.addDirection && <p>{errors.addDirection.message}</p>}
-
-//     <input type="submit" onClick={handleSubmit(onSubmit)} />
-//     </form>
-// );
-// }
-// </div>
-
-// const rootElement = document.getElementById("root");
-
-// ReactDOM.render(<App />, rootElement)};
-
-const NewRecipe = () => {
-  return <h1>New Recipe Place Holder</h1>;
-};
-
-export default NewRecipe;
+          <button>Save Recipe to My Recipes</button>
+      </form>
+    </div>
+  )
+}
