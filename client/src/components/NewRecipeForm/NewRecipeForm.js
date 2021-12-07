@@ -5,7 +5,6 @@ export default function newRecipeForm() {
   const { register, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };

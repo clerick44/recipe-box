@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-// import { Text, View, TextInput, Button, Alert } from "react-native";
-// import { useForm, Controller } from "react-hook-form";
+import React from "react";
 import "./recipeCard.css";
 
 import RecipeHeader from "../RecipeHeader/RecipeHeader";
@@ -8,19 +6,18 @@ import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import RecipeDirections from "../RecipeDirections/Recipedirections";
 
 const RecipeCard = (props) => {
-  console.log(props);
   const { currentRecipe } = props;
 
   return (
     <div id="recipeCardContainer">
       <div id="recipeHeader">
-        <RecipeHeader />
+        <RecipeHeader currentRecipe={currentRecipe} />
       </div>
-      <div class="bottomRow" id="recipeIngredients">
-        <RecipeIngredients />
+      <div className="bottomRow" id="recipeIngredients">
+        <RecipeIngredients currentRecipe={currentRecipe} />
       </div>
-      <div class="bottomRow" id="recipeDirections">
-        <RecipeDirections />
+      <div className="bottomRow" id="recipeDirections">
+        <RecipeDirections currentRecipe={currentRecipe} />
       </div>
     </div>
   );

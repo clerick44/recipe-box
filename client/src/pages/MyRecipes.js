@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 
 import "./myrecipes.css";
@@ -6,18 +6,13 @@ import "./myrecipes.css";
 import RecipeCard from "../components/RecipeCard/RecipeCard";
 import SideBar from "../components/SideBar/SideBar";
 
-import { QUERY_ME, QUERY_RECIPES } from "../utils/queries";
+import { QUERY_RECIPES } from "../utils/queries";
 
 const MyRecipes = () => {
-  const [currentRecipe, setCurrentRecipe] = useState();
-  // const { loading, data } = useQuery(QUERY_ME);
-  const {loading, data} = useQuery(QUERY_RECIPES)
+  const [currentRecipe, setCurrentRecipe] = useState([]);
+  const { loading, data } = useQuery(QUERY_RECIPES);
 
-  console.log("loading ", loading);
-  console.log("data ", data);
   const recipes = data || [];
-
-  console.log("recipes ", recipes);
 
   return (
     <div id="myRecipesWrapper">
@@ -29,7 +24,11 @@ const MyRecipes = () => {
         )}
       </div>
       <div id="recipeContainer">
-        <RecipeCard currentRecipe={currentRecipe} />
+        {currentRecipe.length === 0 ? (
+          <h1>Select a recipe from the left</h1>
+        ) : (
+          <RecipeCard currentRecipe={currentRecipe} />
+        )}
       </div>
     </div>
   );
