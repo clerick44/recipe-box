@@ -6,6 +6,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 
 function App() {
   const { register, formState: { errors } } = useForm();
+
   const onSubmit = data => console.log(data);
 
  
@@ -23,6 +24,7 @@ function App() {
   // }
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     App.post('server\models\Recipes.js', function(req, res) {
       const recipeName = req.body.recipeName;
@@ -35,7 +37,52 @@ function App() {
     }); 
   
 
+
   return (
+    <div id="container">
+      <p className="recipe">
+          <form onSubmit={handleSubmit(onSubmit)}>
+          <section id="section">
+            <span className="leftSide">Please enter a recipe name.</span>       
+                <input className="rightSide" placeholder="Recipe Name" {...register("recipeName", { required: true })} />
+          </section>
+          <section  id="section">
+            <span className="leftSide">Please enter a number of servings.</span>
+              <input className="rightSide" placeholder="Number of Servings" {...register("servings", { required: true })} />
+          </section>
+          <section id="section">
+            <span className="leftSide">Please enter a prep time.</span>
+              <input className="rightSide" placeholder="Prep Time" {...register("prepTime", { required: true })} />
+          </section>
+          <section id="section">
+            <span className="leftSide">Please enter a cook time.</span>            
+              <input className="rightSide" placeholder="Cook Time" {...register("cookTime", { required: true })} />
+          </section>
+          <section id="section">  
+            <span className="leftSide">Please enter special tools needed</span>
+             <input className="rightSide" placeholder="Special Tools Used" {...register("specialTools")} />         
+          </section>
+          <section id="section">  
+            <span className="leftSide">Please enter a recipe ingredient.</span>
+             <input className="rightSide" placeholder="Recipe Ingredient" {...register("recipeIngredient", { required: true })} />
+          </section>  
+          <section id="section">
+            <span className="leftSide">Please enter a recipe direction.</span>
+              <input id="direction" className="rightSide" placeholder="Recipe Directions" {...register("recipeDirections", { required: true })} />
+          </section>
+         
+        
+          {errors.recipeName && <span>This field is required</span>}
+          {errors.servings && <span>This field is required</span>}
+          {errors.prepTime && <span>This field is required</span>}
+          {errors.cookTime && <span>This field is required</span>}
+          {errors.recipeIngredients && <span>This field is required</span>}
+          {errors.recipeDirections && <span>This field is required</span>}
+          
+          <input id="submit" type="submit" />
+        </form> 
+      </p>
+    </div>
     
     <form onSubmit={handleSubmit(onSubmit)}>
       
@@ -59,3 +106,4 @@ function App() {
   )}}
 
   export default App
+

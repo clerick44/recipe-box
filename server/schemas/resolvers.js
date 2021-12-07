@@ -3,82 +3,81 @@ const { User, Thought, Recipes } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-    Query: {
-      
-      //query to show all recipes
-      allRecipes: async () => {
-        return await Recipes.find({});
-      },
-      //query to show one recipe based in user id
-      oneRecipe: async (parent, {recipeId}, context) => {
-      //  if(context.user){
-          const recipeInfo = await Recipes.findOne({_id: recipeId})
-          return recipeInfo;
-        // }
-        // throw new AuthenticationError("You need to be logged in");
-      },
-      //query to show all users and populate recipes
-      allUsers: async () => {
-        return User.find().populate('Recipes');
-      },
-      //query to show a specific recipe
-      user: async (parent, { username }) => {
-        return User.findOne({ username }).populate('Recipes');
-      },
+  Query: {
+    //query to show all recipes
+    allRecipes: async () => {
+      const allRecipes = await Recipes.find({});
+      // console.log(allRecipes);
+      return allRecipes;
     },
-    Mutation: {
-      //Creating a User
-      addUser: async (parent, { username, email, password }) => {
-        const user = await User.create({ username, email, password });
-        const token = signToken(user);
-        return { token, user };
-      },
-      //user login
-      login: async (parent, { email, password }) => {
-        const user = await User.findOne({ email });
-        if (!user) {
-          throw new AuthenticationError('No user found with this email address');
-        }
-        const correctPw = await user.isCorrectPassword(password);
-        if (!correctPw) {
-          throw new AuthenticationError('Incorrect credentials');
-        }
-        const token = signToken(user);
-        return { token, user };
-      },
-      //add a recipe to local user
-      addRecipe: async (parent, { recipeData }, context) => {
-        if (context.user) {
-          const recipe = await Recipes.create({
-            recipeData,
-            recipeAuthor: context.user.username,
-          });
-          await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { Recipes: Recipes._id } }
-          );
-          return recipe;
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      },
-      //delete one recipe for the user
-      removeRecipe: async (parent, { recipeId }, context) => {
-        if (context.user) {
-          const recipe = await Thought.findOneAndDelete({
-            _id: recipeId,
-            recipeAuthor: context.user.username,
-          });
-          await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $pull: { recipe: Recipes._id } }
-
-          );
-          return recipe;
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      },
-
-    }
+    //query to show one recipe based in user id
+    oneRecipe: async (parent, { recipeId }, context) => {
+      //  if(context.user){
+      const recipeInfo = await Recipes.findOne({ _id: recipeId });
+      return recipeInfo;
+      // }
+      // throw new AuthenticationError("You need to be logged in");
+    },
+    //query to show all users and populate recipes
+    allUsers: async () => {
+      return User.find().populate("Recipes");
+    },
+    //query to show a specific recipe
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate("Recipes");
+    },
+  },
+  Mutation: {
+    //Creating a User
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    //user login
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError("No user found with this email address");
+      }
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+      const token = signToken(user);
+      return { token, user };
+    },
+    //add a recipe to local user
+    addRecipe: async (parent, { recipeData }, context) => {
+      if (context.user) {
+        const recipe = await Recipes.create({
+          recipeData,
+          recipeAuthor: context.user.username,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { Recipes: Recipes._id } }
+        );
+        return recipe;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    //delete one recipe for the user
+    removeRecipe: async (parent, { recipeId }, context) => {
+      if (context.user) {
+        const recipe = await Thought.findOneAndDelete({
+          _id: recipeId,
+          recipeAuthor: context.user.username,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { recipe: Recipes._id } }
+        );
+        return recipe;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+  },
   //   Query: {
   //     users: async () => {
   //       return User.find().populate('thoughts');

@@ -9,9 +9,9 @@ const typeDefs = gql`
     savedRecipes: [Recipes]!
   }
 
-# typeDefs for Recipes
-  type Recipes{
-    recipeId: String!
+  # typeDefs for Recipes
+  type Recipes {
+    _id: ID
     recipeName: String
     servings: String
     cookTime: String
@@ -23,7 +23,7 @@ const typeDefs = gql`
     ratings: [String]
   }
 
-# input data for saved recipes
+  # input data for saved recipes
   input savedRecipesInfo {
     recipeId: String!
     recipeName: String
@@ -37,32 +37,32 @@ const typeDefs = gql`
     ratings: [String]
   }
 
-# auth 
+  # auth
   type Auth {
     token: ID!
     user: User
   }
 
-# Declared queries that can be used, data successfully retrieved
+  # Declared queries that can be used, data successfully retrieved
   type Query {
     # tested
-    allUsers: [User] 
+    allUsers: [User]
     #Tested
     user(username: String!): User
     #Tested
     allRecipes: [Recipes]
     #tested
-    oneRecipe(recipeId : ID!): Recipes
+    oneRecipe(recipeId: ID!): Recipes
     # thoughts(username: String): [Thought]
     # thought(thoughtId: ID!): Thought
-    me: User 
+    me: User
   }
 
-# mutations to alter data
+  # mutations to alter data
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveRecipe(recipeData: savedRecipesInfo!):User
+    saveRecipe(recipeData: savedRecipesInfo!): User
     removeRecipe(recipeId: String!): User
     addRecipe(recipeData: String!): Recipes
     # addThought(thoughtText: String!): Thought
