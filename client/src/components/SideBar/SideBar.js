@@ -1,14 +1,10 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-
-import RecipeCard from "../RecipeCard/RecipeCard";
-
-import { QUERY_ME } from "../../utils/queries";
 
 const SideBar = (props) => {
   const { recipes, setCurrentRecipe } = props;
+  console.log(recipes.allRecipes);
 
-  if (!recipes.length) {
+  if (!recipes.allRecipes.length) {
     return <h3>No Recipes Yet</h3>;
   }
 
@@ -16,7 +12,7 @@ const SideBar = (props) => {
     <>
       <h3>My Recipes</h3>
       <ul id="recipeList">
-        {recipes.map((recipe, index) => {
+        {recipes.allRecipes.map((recipe, index) => {
           return (
             <li onClick={() => setCurrentRecipe(recipe)} key={index}>
               {recipe.recipeName}
@@ -26,7 +22,6 @@ const SideBar = (props) => {
       </ul>
     </>
   );
-  // return <h3>Sidebar place Holder</h3>;
 };
 
 export default SideBar;

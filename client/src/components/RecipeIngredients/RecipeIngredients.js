@@ -1,11 +1,25 @@
-import React, { useRef } from "react";
-// import { useForm } from "react-hook-form";
-// import ReactDOM from "react-dom";
+import React from "react";
 
 import "./recipeIngredients.css";
 
-const RecipeIngredients = () => {
-  return <h3>Recipe Ingredients Place Holder</h3>;
+const RecipeIngredients = (props) => {
+  const { currentRecipe } = props || [];
+
+  return (
+    <>
+      <h2>Ingredients</h2>
+      <ul>
+        {!currentRecipe.ingredients ? (
+          <div></div>
+        ) : (
+          currentRecipe.ingredients.map((ingredient, index) => {
+            return <li key={index}> {ingredient} </li>;
+          })
+        )}
+      </ul>
+    </>
+  );
 };
 
 export default RecipeIngredients;
+

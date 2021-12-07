@@ -19,7 +19,7 @@ function NewRecipeForm() {
 
   const handleChange = (e) => {
     //Commented out to get page to load. MUST BE FIXED
-    // setValues({...values, e.target.value})
+    setValues(...values, e.target.value)
     console.log("e ", e);
   };
 
