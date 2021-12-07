@@ -14,8 +14,10 @@ import MyRecipes from "./pages/MyRecipes";
 import UserProfile from "./components/UserProfile/UserProfile";
 import NewRecipe from "./components/NewRecipeForm/NewRecipeForm";
 
+
 import auth from "./utils/auth";
 console.log("******AUTH****** ", auth.loggedIn());
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
