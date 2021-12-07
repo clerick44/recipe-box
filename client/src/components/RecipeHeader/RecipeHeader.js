@@ -1,19 +1,22 @@
 import React from "react";
 import "./recipeHeader.css";
 
-const RecipeHeader = () => {
+const RecipeHeader = (props) => {
+  const { currentRecipe } = props || [];
+
   return (
     <>
       <div id="recipeName">Recipe Title</div>
       <div id="headerSubLine">
         <div class="headerSubItems" id="servings">
-          Serves: 4
+          Serves: {currentRecipe.servings}
+          {/* Servers: 3 */}
         </div>
         <div class="headerSubItems" id="prepTime">
-          Prep Time: 40M
+          Prep Time: {currentRecipe.prepTime} mins
         </div>
         <div class="headerSubItems" id="cookTime">
-          Cook Time: 20M
+          Cook Time: {currentRecipe.cookTime} mins
         </div>
       </div>
     </>
@@ -21,4 +24,3 @@ const RecipeHeader = () => {
 };
 
 export default RecipeHeader;
-

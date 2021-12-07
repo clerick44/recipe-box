@@ -11,12 +11,12 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import MyRecipes from "./pages/MyRecipes";
 
+import UserProfile from "./components/UserProfile/UserProfile";
+import NewRecipe from "./components/NewRecipeForm/NewRecipeForm";
 
 
-import UserProfile from "./components/UserProfile/UserProfile"
-import NewRecipe from "./components/NewRecipeForm/NewRecipeForm"
-
-//import UserProfile from "./components/UserProfile/UserProfile"
+import auth from "./utils/auth";
+console.log("******AUTH****** ", auth.loggedIn());
 
 
 // Construct our main GraphQL API endpoint
@@ -48,7 +48,9 @@ function App() {
 
   const renderPage = () => {
     console.log("************** in RENDERPAGE ************");
-
+    if (!auth.loggedIn()) {
+      return <UserProfile />;
+    }
     if (currentPage === "My Recipes") {
       return <MyRecipes />;
     }
@@ -66,7 +68,9 @@ function App() {
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+
         <div className="container"> {renderPage()}</div>
+
         <Footer />
       </div>
     </ApolloProvider>

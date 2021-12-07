@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -24,33 +23,35 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_RECIPES = gql`
-  query getRecipes {
-        recipeId
-        recipeName
-        servings
-        cookTime
-        prepTime
-        specialTools
-        ingredients
-        instructions
-        recipeAuthor
-        ratings
-      }
+  query allRecipes {
+    allRecipes {
+      _id
+      recipeName
+      servings
+      cookTime
+      prepTime
+      specialTools
+      ingredients
+      instructions
+      recipeAuthor
+      ratings
+    }
+  }
 `;
 
 export const QUERY_SINGLE_RECIPE = gql`
   query getSingleRecipe($recipeId: ID!) {
     recipe(recipeId: $recipeId) {
-        recipeId
-        recipeName
-        servings
-        cookTime
-        prepTime
-        specialTools
-        ingredients
-        instructions
-        recipeAuthor
-        ratings
+      recipeId
+      recipeName
+      servings
+      cookTime
+      prepTime
+      specialTools
+      ingredients
+      instructions
+      recipeAuthor
+      ratings
     }
   }
 `;
