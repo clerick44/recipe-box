@@ -57,19 +57,17 @@ const NewRecipe = () => {
 
 
   const handleChangeInputIngredient = (index, event) => {
-    console.log(index,event);
+    console.log(index, event.taget.ingredient);
     const values = [...inputIngredient];
-    values[index][event.taget.ingredient] = event.target.value;
-    setInputField(values)
-
+    values[index][event.taget.ingredient]= event.taget.value;
+    setInputIngredient(values)
   };
 
   const handleChangeInputInstruction = (index, event) => {
-    console.log(index,event);
+    console.log(index, event.taget.instruction);
     const values = [...inputInstruction];
-    values[index][event.taget.instruction] = event.target.value;
-    setInputField(values)
-
+    values[index][event.taget.instruction] = event.taget.value;
+    setInputInstruction(values)
   };
 
   const ingredientAddFields = () => {
@@ -219,7 +217,7 @@ const NewRecipe = () => {
           />
       </div>
       <div>
-        { inputIngredient.map((inputIngredient, index) => (
+        { inputIngredient.map((ingredients, index) => (
           <div key={index}>
             <TextField
               name="ingredient"
@@ -240,7 +238,7 @@ const NewRecipe = () => {
         ))}
       </div>
       <div>
-        { inputInstruction.map((inputInstruction, index) => (
+        { inputInstruction.map((instructions, index) => (
           <div key={index}>
             <TextField
               name="instruction"
