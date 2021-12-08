@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import ReactDOM from 'react-dom';
-import { Button } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
-import RemoveIcon from '@material-ui/icons';
-import AddIcon from '@material-ui/icons';
-import { TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import { Icon } from '@material-ui';
+import { Button } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import {RemoveIcon} from '@mui/icons-material';
+import {AddIcon} from '@mui/icons-material';
+import { TextField } from '@mui/material';
+
+// import { makeStyles } from '@mui/core';
+// import { Icon } from '@mui';
+
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
 
-import { CallMissedSharp } from '@mui/icons-material';
-import { mergeClasses } from '@material-ui/styles';
+// import { CallMissedSharp } from '@mui/icons-material';
+// import { mergeClasses } from '@material-ui/styles';
 
 
 
@@ -33,7 +35,7 @@ const NewRecipe = () => {
     instructions: '',
   });
 
-function NewRecipe() {
+// function NewRecipe() {
   const [inputField, setInputField] = useState([
     {
       recipeName: '',
@@ -85,7 +87,7 @@ function NewRecipe() {
     });
   };
   
-  const handleFormSubmit = async ( e, recipeData) => {
+  // const handleFormSubmit = async ( e, recipeData) => {
 
 
   const handleSubmit = async (recipeData, e) => {
@@ -251,11 +253,11 @@ function NewRecipe() {
      </form>
     </div>
   )
-        }
+        // }
 
 
-    </>
-  );
+    // </>
+  // );
 };
 
 export default NewRecipe;
