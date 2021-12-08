@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import ReactDOM from 'react-dom';
 import { Button } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
@@ -19,6 +19,19 @@ import { mergeClasses } from '@material-ui/styles';
 
 
 
+
+const NewRecipe = () => {
+
+  // new set form state to clear form
+  const [formState, setFormState] = useState({
+    recipeName: '',
+    servings: '',
+    prepTime: '',
+    cookTime: '',
+    specialTools: '',
+    ingredients: '',
+    instructions: '',
+  });
 
 function NewRecipe() {
   const [inputField, setInputField] = useState([
@@ -61,29 +74,89 @@ function NewRecipe() {
   };
 
   const [addRecipe, { error, data }] = useMutation(ADD_RECIPE);
+  console.log("data being send to DB", data)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  
+  const handleFormSubmit = async ( e, recipeData) => {
+
 
   const handleSubmit = async (recipeData, e) => {
+
     e.preventDefault();
-    console.log(recipeData, e);
-    console.log("register ", recipeData);
-    const {
-      recipeName,
-      servings,
-      prepTime,
-      cookTime,
-      specialTools,
-      ingredients,
-      instructions,
-    } = recipeData;
+    console.log("register ", formState.recipeName);
+    console.log("register ", formState.servings);
+    console.log("register ", formState.prepTime);
+    console.log("register ", formState.cookTime);
+    console.log("register ", formState.specialTools);
+    console.log("register ", formState.ingredients);
+    console.log("register ", formState.instructions);
+    
+    var recipeName= formState.recipeName;
+    var servings = formState.servings;
+    var prepTime = formState.prepTime;
+    var cookTime = formState.cookTime;
+    var specialTools = formState.specialTools;
+    var ingredients = formState.ingredients;
+    var instructions = formState.instructions;
+
+    // const {
+    //   recipeName,
+    //   servings,
+    //   prepTime,
+    //   cookTime,
+    //   specialTools,
+    //   ingredients,
+    //   instructions,
+    // } = recipeData;
+    // console.log("data for recipe!! ", recipeData)
+
 
     try {
-      const { data } = await addRecipe({ variables: { recipeData } });
-      console.log(data);
-      console.log("******ADDED NEW RECIPE*******", recipeData);
+      console.log("trying to register")
+
+      await addRecipe({ 
+        variables: { recipeName, servings,  cookTime,prepTime, specialTools, ingredients, instructions }, });
+      console.log();
+      console.log("******ADDED NEW RECIPE*******");
     } catch (e) {
       console.error(e);
     }
   };
+  
+
+
+  // old code Jesse
+  // const onSubmit = async (recipeData, e) => {
+  //   e.preventDefault();
+    // console.log(recipeData, e);
+    // console.log("register ", recipeData);
+    // const {
+    //   recipeName,
+    //   servings,
+    //   prepTime,
+    //   cookTime,
+    //   specialTools,
+    //   ingredients,
+    //   instructions,
+    // } = recipeData;
+
+  //   try {
+  //     const { data } = await addRecipe({ variables: { recipeData } });
+  //     console.log(data);
+  //     console.log("******ADDED NEW RECIPE*******", recipeData);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
 
   return (
     <div>
@@ -183,7 +256,7 @@ function NewRecipe() {
 
     </>
   );
-}
+};
 
 export default NewRecipe;
 

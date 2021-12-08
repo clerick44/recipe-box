@@ -13,7 +13,7 @@ const Signup = () => {
     password: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
+  console.log("User data being send to DB", data)
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -32,7 +32,7 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
