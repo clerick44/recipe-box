@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-// import { useForm, useFieldArray } from "react-hook-form";
-
+import ReactDOM from 'react-dom';
+import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import RemoveIcon from '@material-ui/icons';
+import AddIcon from '@material-ui/icons';
+import { TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import { Icon } from '@material-ui';
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
-import "./newRecipeForm.css";
+
+import { CallMissedSharp } from '@mui/icons-material';
+import { mergeClasses } from '@material-ui/styles';
+
+
+
+
+
+
+
 
 const NewRecipe = () => {
-
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit,
-  // } = useForm();
 
   // new set form state to clear form
   const [formState, setFormState] = useState({
@@ -24,6 +32,46 @@ const NewRecipe = () => {
     ingredients: '',
     instructions: '',
   });
+
+function NewRecipe() {
+  const [inputField, setInputField] = useState([
+    {
+      recipeName: '',
+      servings: '',
+      prepTime: '',
+      cookTime: '',
+      specialTools: '',
+      ingredient: '',
+      instruction: '',
+    }
+  ]);
+
+  const handleChangeInput = (index, event) => {
+    const values = [...inputField];
+    values[index][event.taget.ingredient] = event.target.value;
+    setInputField(values)
+
+  };
+
+  const ingredientAddFields = () => {
+    setInputFields([...inputField, {ingredient: ''}])
+  };
+
+  const ingredientRemoveFields = (index) => {
+    const values = [...inputField];
+    values.splice(index, 1);
+    setInputField (values);
+  };
+
+  const instructionAddFields = () => {
+    setInputFields([...inputField, {ingredient: ''}])
+  };
+
+  const instructionRemoveFields = (index) => {
+    const values = [...inputField];
+    values.splice(index, 1);
+    setInputField (values);
+  };
 
   const [addRecipe, { error, data }] = useMutation(ADD_RECIPE);
   console.log("data being send to DB", data)
@@ -38,6 +86,9 @@ const NewRecipe = () => {
   };
   
   const handleFormSubmit = async ( e, recipeData) => {
+
+
+  const handleSubmit = async (recipeData, e) => {
 
     e.preventDefault();
     console.log("register ", formState.recipeName);
@@ -106,149 +157,106 @@ const NewRecipe = () => {
   //   }
   // };
 
-  // const handleChange = (e) => {
-  //   this.setState({
-  //     [e.target.recipeName]: e.target.value,
-  //     [e.target.servings]: e.target.value,
-  //     [e.target.prepTime]: e.target.value,
-  //     [e.target.cookTime]: e.target.value,
-  //     [e.target.specialTools]: e.target.value,
-  //     [e.target.recipeIngredients]: e.target.value,
-  //     [e.target.recipeDirections]: e.target.value,
-  //   })
-  // }
-
-  // const handleSubmit = async (e) => {
-  // e.preventDefault();
-  // }
-  // try {
-  //   const { data } = await addRecipe({
-  //     variables: { ...formState },
-  //   });
-  //   console.log("Success!", data);
-  // } catch (e) {
-  //   console.error(e);
-  // }
-
-  // App.post("servermodelsRecipes.js", function (req, res) {
-  //   const recipeName = req.body.recipeName;
-  //   const servings = req.body.servings;
-  //   const prepTime = req.body.prepTime;
-  //   const cookTime = req.body.cookTime;
-  //   const specialTools = req.body.secialTools;
-  //   const Ingredients = req.body.recipeIngredients;
-  //   const Directions = req.body.recipeDirections;
-  // })
-  // };
 
   return (
-    <>
-      <div id="container">
-        <div className="recipe">
-          <form onSubmit={handleFormSubmit}>
-            <section id="section">
-              <span className="leftSide">Please enter a recipe name.</span>
-              <input
-                className="rightSide"
-                placeholder="Recipe Name"
-                name="recipeName"
-                value={formState.recipeName}
-                onChange={handleChange}
-                // {...register("recipeName", { required: true })}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">
-                Please enter a number of servings.
-              </span>
-              <input
-                className="rightSide"
-                placeholder="Number of Servings"
-                name="servings"
-                value={formState.servings}
-                onChange={handleChange}
-                // {...register("servings", { required: true })}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">Please enter a prep time.</span>
-              <input
-                className="rightSide"
-                placeholder="Prep Time"
-                name="prepTime"
-                value={formState.prepTime}
-                onChange={handleChange}
-                // {...register("prepTime", { required: true })}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">Please enter a cook time.</span>
-              <input
-                className="rightSide"
-                placeholder="Cook Time"
-                name="cookTime"
-                value={formState.cookTime}
-                onChange={handleChange}
-                // {...register("cookTime", { required: true })}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">
-                Please enter special tools needed
-              </span>
-              <input
-                className="rightSide"
-                placeholder="Special Tools Used"
-                name="specialTools"
-                value={formState.specialTools}
-                onChange={handleChange}
-                // {...register("specialTools")}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">
-                Please enter a recipe ingredient.
-              </span>
-              <input
-                className="rightSide"
-                placeholder="Recipe Ingredient"
-                name="ingredients"
-                value={formState.ingredients}
-                onChange={handleChange}
-                // {...register("ingredients", { required: true })}
-              />
-            </section>
-            <section id="section">
-              <span className="leftSide">Please enter a recipe direction.</span>
-              <input
-                id="direction"
-                className="rightSide"
-                placeholder="Recipe Directions"
-                name="instructions"
-                value={formState.instructions}
-                onChange={handleChange}
-                // {...register("instructions", { required: true })}
-              />
-            </section>
-
-            {/* {errors.recipeName && <span>This field is required</span>}
-            {errors.servings && <span>This field is required</span>}
-            {errors.prepTime && <span>This field is required</span>}
-            {errors.cookTime && <span>This field is required</span>}
-            {errors.recipeIngredients && <span>This field is required</span>}
-            {errors.recipeDirections && <span>This field is required</span>} */}
-
-            <input id="submit" type="submit" />
-          </form>
-          {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-        </div>
+    <div>
+      <h1>Add New Recipe</h1>
+      <form onSubmit={handleSubmit}>
+      <div>
+        <TextField
+          name="recipeName"
+          label="Recipe Name"
+          value={inputField.recipeName}
+          variant="filled"
+          />
       </div>
+
+      <div>
+        <TextField
+          name="servings"
+          label="Number of Servings"
+          value={inputField.servings}
+          />
+      </div>
+      <div>
+        <TextField
+          name="prepTime"
+          label="Prep Time"
+          value={inputField.prepTime}
+          />
+      </div>
+      <div>
+        <TextField
+          name="cookTime"
+          label="Cook Time"
+          value={inputField.cookTime}
+          />
+      </div>
+      <div>
+        <TextField
+          name="specialTools"
+          label="Special Tools Used in Recipe"
+          value={inputField.servings}
+          />
+      </div>
+      <div>
+        { inputField.map((inputField, index) => (
+          <div key={index}>
+            <TextField
+              name="ingredient"
+              label="Ingredient"
+              value= {inputField.ingredient}
+              variant="filled"
+            />
+            <IconButton
+            onClick={(index) => ingredientRemoveFields}>
+              <RemoveIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => ingredientAddFields ()} >
+              <AddIcon />
+            </IconButton>
+          </div>
+        ))}
+      </div>
+      <div>
+        { inputField.map((inputField, index) => (
+          <div key={index}>
+            <TextField
+              name="instruction"
+              label="Instruction"
+              value= {inputField.instruction}
+              variant="filled"
+              onChange={event => handleChangeInput(index, event)}
+            />
+            <IconButton
+            onClick={(index) => instructionRemoveFields}>
+              <RemoveIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => instructionAddFields ()} >
+              <AddIcon />
+            </IconButton>
+          </div>
+        )) }
+        </div>
+     
+      <Button 
+        variant="contained" 
+        color = "primary" 
+        type="submit"
+        endIcon={<Icon>send</Icon>}>
+        onClick={handleSubmit}
+        Add Recipe</Button>
+     </form>
+    </div>
+  )
+        }
+
+
     </>
   );
 };
 
 export default NewRecipe;
+

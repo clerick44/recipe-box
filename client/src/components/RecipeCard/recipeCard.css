@@ -2,13 +2,14 @@
   margin: auto;
   width: 60vw;
   min-height: 30vh;
-  border: 3px solid black;
+  border: 3px solid #1A4687;
   border-radius: 5px;
   box-shadow: 5px 10px 8px #888888;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px;
+  background-color: #f1e9da;
 }
 
 #recipeHeader {
@@ -18,12 +19,12 @@
 
 #recipeIngredients {
   flex: 1 1 33%;
-  border-right: 3px solid black;
-  padding: 5px;
+  border-right: 3px solid #1A4687;
+  padding: 10px;
 }
 
 #recipeDirections {
   flex: 1 1 66%;
-  padding: 5px;
+  padding: 10px;
 }
 
