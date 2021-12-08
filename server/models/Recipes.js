@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const recipeSchema = new Schema({
   recipeName: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
   servings: {

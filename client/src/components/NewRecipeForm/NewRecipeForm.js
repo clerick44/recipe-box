@@ -9,8 +9,12 @@ import { makeStyles } from '@material-ui/core';
 import { Icon } from '@material-ui';
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
+
 import { CallMissedSharp } from '@mui/icons-material';
 import { mergeClasses } from '@material-ui/styles';
+
+
+
 
 
 
@@ -30,9 +34,10 @@ function NewRecipe() {
   ]);
 
   const handleChangeInput = (index, event) => {
-    const values = [...inpuutField];
+    const values = [...inputField];
     values[index][event.taget.ingredient] = event.target.value;
     setInputField(values)
+
   };
 
   const ingredientAddFields = () => {
@@ -92,6 +97,7 @@ function NewRecipe() {
           variant="filled"
           />
       </div>
+
       <div>
         <TextField
           name="servings"
@@ -174,4 +180,10 @@ function NewRecipe() {
   )
         }
 
-export default NewRecipe
+
+    </>
+  );
+}
+
+export default NewRecipe;
+

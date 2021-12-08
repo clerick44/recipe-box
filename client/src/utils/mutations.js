@@ -25,8 +25,24 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_RECIPE = gql`
-  mutation addRecipe($recipeData: String!) {
-    addRecipe(thoughtText: $recipeData) {
+  mutation addRecipe(
+    $recipeName: String
+    $servings: String
+    $prepTime: Int
+    $cookTime: Int
+    $specialTools: String
+    $ingredients: [String]
+    $instructions: [String]
+  ) {
+    addRecipe(
+      recipeName: $recipeName
+      servings: $servings
+      prepTime: $prepTime
+      cookTime: $cookTime
+      specialTools: $specialTools
+      ingredients: $ingredients
+      instructions: $instructions
+    ) {
       _id
       recipeName
       servings
@@ -40,7 +56,6 @@ export const ADD_RECIPE = gql`
     }
   }
 `;
-
 
 // export const ADD_THOUGHT = gql`
 //   mutation addThought($thoughtText: String!) {
@@ -56,4 +71,3 @@ export const ADD_RECIPE = gql`
 //     }
 //   }
 // `;
-
