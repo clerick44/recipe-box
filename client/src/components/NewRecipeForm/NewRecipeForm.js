@@ -6,14 +6,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { TextField } from '@mui/material';
 
-// import { makeStyles } from '@mui/core';
-// import { Icon } from '@mui';
-
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
+import { ConstructionOutlined } from "@mui/icons-material";
 
-// import { CallMissedSharp } from '@mui/icons-material';
-// import { mergeClasses } from '@material-ui/styles';
 
 
 
@@ -60,9 +56,18 @@ const NewRecipe = () => {
 
 
 
-  const handleChangeInput = (index, event) => {
-    const values = [...inputField];
+  const handleChangeInputIngredient = (index, event) => {
+    console.log(index,event);
+    const values = [...inputIngredient];
     values[index][event.taget.ingredient] = event.target.value;
+    setInputField(values)
+
+  };
+
+  const handleChangeInputInstruction = (index, event) => {
+    console.log(index,event);
+    const values = [...inputInstruction];
+    values[index][event.taget.instruction] = event.target.value;
     setInputField(values)
 
   };
@@ -73,8 +78,8 @@ const NewRecipe = () => {
 
   const ingredientRemoveFields = (index) => {
     const values = [...inputIngredient];
-    values.splice(index, -1);
-    setInputField (values);
+    values.splice(index, 1);
+    setInputIngredient (values);
   };
 
   const instructionAddFields = () => {
@@ -83,8 +88,8 @@ const NewRecipe = () => {
 
   const instructionRemoveFields = (index) => {
     const values = [...inputInstruction];
-    values.splice(index, -1);
-    setInputField (values);
+    values.splice(index, 1);
+    setInputInstruction (values);
   };
 
   const [addRecipe, { error, data }] = useMutation(ADD_RECIPE);
@@ -221,9 +226,10 @@ const NewRecipe = () => {
               label="Ingredient"
               value= {inputIngredient.ingredient}
               variant="filled"
+              onChange={event => handleChangeInputIngredient(index, event)}
             />
             <IconButton
-            onClick={(index) => ingredientRemoveFields}>
+            onClick={() => ingredientRemoveFields (index)}>
               <RemoveIcon />
             </IconButton>
             <IconButton
@@ -241,10 +247,10 @@ const NewRecipe = () => {
               label="Instruction"
               value= {inputInstruction.instruction}
               variant="filled"
-              onChange={event => handleChangeInput(index, event)}
+              onChange={event => handleChangeInputInstruction(index, event)}
             />
             <IconButton
-            onClick={(index) => instructionRemoveFields}>
+            onClick={() => instructionRemoveFields (index)}>
               <RemoveIcon />
             </IconButton>
             <IconButton
