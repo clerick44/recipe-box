@@ -1,15 +1,21 @@
+ {
+  
+}
 #myRecipesWrapper {
   display: flex;
   flex-direction: row;
   height: 82vh;
+  padding-left: 20px;
+
 }
 
 #sideBar {
-  background-color: aqua;
+  color: #F1E9DA;
+  background-color: #1A4687;
   width: 25%;
-  border-right: 5px solid grey;
+  border-right: 5px solid #F44830;
 }
 
 #recipeContainer {
-  margin: auto;
+  margin: auto; 
 }
