@@ -10,12 +10,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
 import { ConstructionOutlined } from "@mui/icons-material";
 
-
-
-
-
-
-
+import "./newRecipeForm.css";
 
 
 const NewRecipe = () => {
@@ -57,19 +52,17 @@ const NewRecipe = () => {
 
 
   const handleChangeInputIngredient = (index, event) => {
-    console.log(index,event);
+    console.log(index, event.target);
     const values = [...inputIngredient];
-    values[index][event.taget.ingredient] = event.target.value;
-    setInputField(values)
-
+    values[index][event.target.ingredient]= event.target.value;
+    setInputIngredient(values)
   };
 
   const handleChangeInputInstruction = (index, event) => {
-    console.log(index,event);
+    console.log(index, event.target.value);
     const values = [...inputInstruction];
-    values[index][event.taget.instruction] = event.target.value;
-    setInputField(values)
-
+    values[index][event.target.instruction] = event.target.value;
+    setInputInstruction(values)
   };
 
   const ingredientAddFields = () => {
@@ -178,10 +171,10 @@ const NewRecipe = () => {
 
 
   return (
-    <div>
+    <div id="container">
       <h1>Add New Recipe</h1>
       <form onSubmit={handleSubmit}>
-      <div>
+      <div className="formField">
         <TextField
           name="recipeName"
           label="Recipe Name"
@@ -190,36 +183,36 @@ const NewRecipe = () => {
           />
       </div>
 
-      <div>
+      <div className="formField">
         <TextField
           name="servings"
           label="Number of Servings"
           value={inputField.servings}
           />
       </div>
-      <div>
+      <div className="formField">
         <TextField
           name="prepTime"
           label="Prep Time"
           value={inputField.prepTime}
           />
       </div>
-      <div>
+      <div className="formField">
         <TextField
           name="cookTime"
           label="Cook Time"
           value={inputField.cookTime}
           />
       </div>
-      <div>
+      <div className="formField">
         <TextField
           name="specialTools"
           label="Special Tools Used in Recipe"
           value={inputField.servings}
           />
       </div>
-      <div>
-        { inputIngredient.map((inputIngredient, index) => (
+      <div className="formField">
+        { inputIngredient.map((ingredients, index) => (
           <div key={index}>
             <TextField
               name="ingredient"
@@ -239,8 +232,8 @@ const NewRecipe = () => {
           </div>
         ))}
       </div>
-      <div>
-        { inputInstruction.map((inputInstruction, index) => (
+      <div className="formField">
+        { inputInstruction.map((instructions, index) => (
           <div key={index}>
             <TextField
               name="instruction"
