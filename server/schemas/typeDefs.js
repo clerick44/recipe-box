@@ -12,6 +12,7 @@ const typeDefs = gql`
   # typeDefs for Recipes
   type Recipes {
     _id: ID
+    recipeId: String
     recipeName: String
     servings: String
     cookTime: String
@@ -65,12 +66,12 @@ const typeDefs = gql`
     saveRecipe(recipeData: savedRecipesInfo!): User
     removeRecipe(recipeId: String!): User
     addRecipe(
-      recipeName: String
-      servings: String
-      prepTime: Int
-      cookTime: Int
-      specialTools: String
-      ingredients: [String]
+      recipeName: String!,
+      servings: String,
+      prepTime: String,
+      cookTime: String,
+      specialTools: String,
+      ingredients: [String],
       instructions: [String]
     ): Recipes
     # addThought(thoughtText: String!): Thought

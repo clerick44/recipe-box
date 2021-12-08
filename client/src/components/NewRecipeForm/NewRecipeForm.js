@@ -1,42 +1,110 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { useForm, useFieldArray } from "react-hook-form";
+// import { useForm, useFieldArray } from "react-hook-form";
 
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
 import "./newRecipeForm.css";
 
-function NewRecipe() {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+const NewRecipe = () => {
+
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   handleSubmit,
+  // } = useForm();
+
+  // new set form state to clear form
+  const [formState, setFormState] = useState({
+    recipeName: '',
+    servings: '',
+    prepTime: '',
+    cookTime: '',
+    specialTools: '',
+    ingredients: '',
+    instructions: '',
+  });
 
   const [addRecipe, { error, data }] = useMutation(ADD_RECIPE);
+  console.log("data being send to DB", data)
 
-  const onSubmit = async (recipeData, e) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  
+  const handleFormSubmit = async ( e, recipeData) => {
+
     e.preventDefault();
-    console.log(recipeData, e);
-    console.log("register ", recipeData);
-    const {
-      recipeName,
-      servings,
-      prepTime,
-      cookTime,
-      specialTools,
-      ingredients,
-      instructions,
-    } = recipeData;
+    console.log("register ", formState.recipeName);
+    console.log("register ", formState.servings);
+    console.log("register ", formState.prepTime);
+    console.log("register ", formState.cookTime);
+    console.log("register ", formState.specialTools);
+    console.log("register ", formState.ingredients);
+    console.log("register ", formState.instructions);
+    
+    var recipeName= formState.recipeName;
+    var servings = formState.servings;
+    var prepTime = formState.prepTime;
+    var cookTime = formState.cookTime;
+    var specialTools = formState.specialTools;
+    var ingredients = formState.ingredients;
+    var instructions = formState.instructions;
+
+    // const {
+    //   recipeName,
+    //   servings,
+    //   prepTime,
+    //   cookTime,
+    //   specialTools,
+    //   ingredients,
+    //   instructions,
+    // } = recipeData;
+    // console.log("data for recipe!! ", recipeData)
+
 
     try {
-      const { data } = await addRecipe({ variables: { recipeData } });
-      console.log(data);
-      console.log("******ADDED NEW RECIPE*******", recipeData);
+      console.log("trying to register")
+
+      await addRecipe({ 
+        variables: { recipeName, servings,  cookTime,prepTime, specialTools, ingredients, instructions }, });
+      console.log();
+      console.log("******ADDED NEW RECIPE*******");
     } catch (e) {
       console.error(e);
     }
   };
+  
+
+
+  // old code Jesse
+  // const onSubmit = async (recipeData, e) => {
+  //   e.preventDefault();
+    // console.log(recipeData, e);
+    // console.log("register ", recipeData);
+    // const {
+    //   recipeName,
+    //   servings,
+    //   prepTime,
+    //   cookTime,
+    //   specialTools,
+    //   ingredients,
+    //   instructions,
+    // } = recipeData;
+
+  //   try {
+  //     const { data } = await addRecipe({ variables: { recipeData } });
+  //     console.log(data);
+  //     console.log("******ADDED NEW RECIPE*******", recipeData);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   // const handleChange = (e) => {
   //   this.setState({
@@ -52,7 +120,7 @@ function NewRecipe() {
 
   // const handleSubmit = async (e) => {
   // e.preventDefault();
-
+  // }
   // try {
   //   const { data } = await addRecipe({
   //     variables: { ...formState },
@@ -77,13 +145,16 @@ function NewRecipe() {
     <>
       <div id="container">
         <div className="recipe">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleFormSubmit}>
             <section id="section">
               <span className="leftSide">Please enter a recipe name.</span>
               <input
                 className="rightSide"
                 placeholder="Recipe Name"
-                {...register("recipeName", { required: true })}
+                name="recipeName"
+                value={formState.recipeName}
+                onChange={handleChange}
+                // {...register("recipeName", { required: true })}
               />
             </section>
             <section id="section">
@@ -93,7 +164,10 @@ function NewRecipe() {
               <input
                 className="rightSide"
                 placeholder="Number of Servings"
-                {...register("servings", { required: true })}
+                name="servings"
+                value={formState.servings}
+                onChange={handleChange}
+                // {...register("servings", { required: true })}
               />
             </section>
             <section id="section">
@@ -101,7 +175,10 @@ function NewRecipe() {
               <input
                 className="rightSide"
                 placeholder="Prep Time"
-                {...register("prepTime", { required: true })}
+                name="prepTime"
+                value={formState.prepTime}
+                onChange={handleChange}
+                // {...register("prepTime", { required: true })}
               />
             </section>
             <section id="section">
@@ -109,7 +186,10 @@ function NewRecipe() {
               <input
                 className="rightSide"
                 placeholder="Cook Time"
-                {...register("cookTime", { required: true })}
+                name="cookTime"
+                value={formState.cookTime}
+                onChange={handleChange}
+                // {...register("cookTime", { required: true })}
               />
             </section>
             <section id="section">
@@ -119,7 +199,10 @@ function NewRecipe() {
               <input
                 className="rightSide"
                 placeholder="Special Tools Used"
-                {...register("specialTools")}
+                name="specialTools"
+                value={formState.specialTools}
+                onChange={handleChange}
+                // {...register("specialTools")}
               />
             </section>
             <section id="section">
@@ -129,7 +212,10 @@ function NewRecipe() {
               <input
                 className="rightSide"
                 placeholder="Recipe Ingredient"
-                {...register("ingredients", { required: true })}
+                name="ingredients"
+                value={formState.ingredients}
+                onChange={handleChange}
+                // {...register("ingredients", { required: true })}
               />
             </section>
             <section id="section">
@@ -138,23 +224,31 @@ function NewRecipe() {
                 id="direction"
                 className="rightSide"
                 placeholder="Recipe Directions"
-                {...register("instructions", { required: true })}
+                name="instructions"
+                value={formState.instructions}
+                onChange={handleChange}
+                // {...register("instructions", { required: true })}
               />
             </section>
 
-            {errors.recipeName && <span>This field is required</span>}
+            {/* {errors.recipeName && <span>This field is required</span>}
             {errors.servings && <span>This field is required</span>}
             {errors.prepTime && <span>This field is required</span>}
             {errors.cookTime && <span>This field is required</span>}
             {errors.recipeIngredients && <span>This field is required</span>}
-            {errors.recipeDirections && <span>This field is required</span>}
+            {errors.recipeDirections && <span>This field is required</span>} */}
 
             <input id="submit" type="submit" />
           </form>
+          {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
         </div>
       </div>
     </>
   );
-}
+};
 
 export default NewRecipe;

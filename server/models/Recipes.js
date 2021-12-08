@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const recipeSchema = new Schema({
   recipeName: {
     type: String,
-    // required: true,
+    required: true,
     trim: true,
   },
   servings: {
@@ -11,10 +11,10 @@ const recipeSchema = new Schema({
     trim: true,
   },
   cookTime: {
-    type: Number,
+    type: String,
   },
   prepTime: {
-    type: Number,
+    type: String,
   },
   specialTools: {
     type: Array,
@@ -29,7 +29,7 @@ const recipeSchema = new Schema({
   },
   recipeAuthor: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
   ratings: [Number],

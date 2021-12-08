@@ -26,24 +26,23 @@ export const ADD_USER = gql`
 
 export const ADD_RECIPE = gql`
   mutation addRecipe(
-    $recipeName: String
-    $servings: String
-    $prepTime: Int
-    $cookTime: Int
-    $specialTools: String
-    $ingredients: [String]
+    $recipeName: String!,
+    $servings: String,
+    $prepTime: String,
+    $cookTime: String,
+    $specialTools: String,
+    $ingredients: [String],
     $instructions: [String]
   ) {
     addRecipe(
-      recipeName: $recipeName
-      servings: $servings
-      prepTime: $prepTime
-      cookTime: $cookTime
-      specialTools: $specialTools
-      ingredients: $ingredients
+      recipeName: $recipeName,
+      servings: $servings,
+      prepTime: $prepTime,
+      cookTime: $cookTime,
+      specialTools: $specialTools,
+      ingredients: $ingredients,
       instructions: $instructions
     ) {
-      _id
       recipeName
       servings
       cookTime

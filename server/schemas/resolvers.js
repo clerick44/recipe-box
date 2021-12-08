@@ -48,20 +48,47 @@ const resolvers = {
       return { token, user };
     },
     //add a recipe to local user
-    addRecipe: async (parent, recipeData, context) => {
-      console.log(recipeData);
+    // const {recipeName,
+    //   servings,
+    //   cookTime,
+    //   prepTime,
+    //   specialTools,
+    //   ingredients,
+    //   instructions}=recipeData;
+      
+    addRecipe: async (parent, {recipeName,
+      servings,
+      cookTime,
+      prepTime,
+      specialTools,
+      ingredients,
+      instructions}, context) => {
+        console.log("are we here?")
+      // console.log(recipeName,
+      //   servings,
+      //   cookTime,
+      //   prepTime,
+      //   specialTools,
+      //   ingredients,
+      //   instructions);
 
-      if (context.user) {
+      // if (context.user) {
         const recipe = await Recipes.create({
-          recipeData,
-          recipeAuthor: context.user.username,
+          recipeName,
+          servings,
+          cookTime,
+          prepTime,
+          specialTools,
+          ingredients,
+          instructions
+          // recipeAuthor: context.user.username,
         });
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+          // { _id: context.user._id },
           { $addToSet: { Recipes: Recipes._id } }
         );
         return recipe;
-      }
+      // }
       throw new AuthenticationError("You need to be logged in!");
     },
     //delete one recipe for the user
