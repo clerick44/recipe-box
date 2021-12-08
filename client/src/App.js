@@ -71,7 +71,7 @@ function App() {
 
         <div className="container"> {renderPage()}</div>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ApolloProvider>
   );
