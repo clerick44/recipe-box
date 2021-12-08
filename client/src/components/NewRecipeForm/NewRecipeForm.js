@@ -4,6 +4,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../../utils/mutations";
+import "./newRecipeForm.css";
 
 function NewRecipe() {
   const {
@@ -14,16 +15,27 @@ function NewRecipe() {
 
   const [addRecipe, { error, data }] = useMutation(ADD_RECIPE);
 
-  const onSubmit =  (data, e) => {
-    console.log(data, e);
-console.log("register ", ...register)
-    // try {
-    //   const { recipeData } = addRecipe({ data });
+  const onSubmit = async (recipeData, e) => {
+    e.preventDefault();
+    console.log(recipeData, e);
+    console.log("register ", recipeData);
+    const {
+      recipeName,
+      servings,
+      prepTime,
+      cookTime,
+      specialTools,
+      ingredients,
+      instructions,
+    } = recipeData;
 
-    //   console.log("******ADDED NEW RECIPE*******", recipeData);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const { data } = await addRecipe({ variables: { recipeData } });
+      console.log(data);
+      console.log("******ADDED NEW RECIPE*******", recipeData);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   // const handleChange = (e) => {
@@ -117,7 +129,7 @@ console.log("register ", ...register)
               <input
                 className="rightSide"
                 placeholder="Recipe Ingredient"
-                {...register("recipeIngredient", { required: true })}
+                {...register("ingredients", { required: true })}
               />
             </section>
             <section id="section">
@@ -126,7 +138,7 @@ console.log("register ", ...register)
                 id="direction"
                 className="rightSide"
                 placeholder="Recipe Directions"
-                {...register("recipeDirections", { required: true })}
+                {...register("instructions", { required: true })}
               />
             </section>
 
@@ -141,46 +153,6 @@ console.log("register ", ...register)
           </form>
         </div>
       </div>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          defaultValue="Recipe Name"
-          {...register("recipeName", { required: true })}
-        />
-        <input
-          defaultValue="Number of Servings"
-          {...register("servings", { required: true })}
-        />
-        <input
-          defaultValue="Prep Time"
-          {...register("prepTime", { required: true })}
-        />
-        <input
-          defaultValue="Cook Time"
-          {...register("cookTime", { required: true })}
-        />
-        <input
-          defaultValue="Special Tools Used"
-          {...register("specialTools")}
-        />
-        <input
-          defaultValue="Recipe Ingredients"
-          {...register("recipeIngredients", { required: true })}
-        />
-        <input
-          defaultValue="Recipe Directions"
-          {...register("recipeDirections", { required: true })}
-        />
-
-        {errors.recipeName && <span>This field is required</span>}
-        {errors.servings && <span>This field is required</span>}
-        {errors.prepTime && <span>This field is required</span>}
-        {errors.cookTime && <span>This field is required</span>}
-        {errors.recipeIngredients && <span>This field is required</span>}
-        {errors.recipeDirections && <span>This field is required</span>}
-
-        <input type="submit" />
-      </form>
     </>
   );
 }

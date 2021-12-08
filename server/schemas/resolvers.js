@@ -48,7 +48,9 @@ const resolvers = {
       return { token, user };
     },
     //add a recipe to local user
-    addRecipe: async (parent, { recipeData }, context) => {
+    addRecipe: async (parent, recipeData, context) => {
+      console.log(recipeData);
+
       if (context.user) {
         const recipe = await Recipes.create({
           recipeData,
