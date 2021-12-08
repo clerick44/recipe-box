@@ -4,7 +4,6 @@ import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import SendIcon from '@mui/icons-material/Send';
 import { TextField } from '@mui/material';
 
 // import { makeStyles } from '@mui/core';
@@ -44,10 +43,22 @@ const NewRecipe = () => {
       prepTime: '',
       cookTime: '',
       specialTools: '',
+    }
+  ]);
+
+  const [inputIngredient, setInputIngredient] = useState([
+    {
       ingredient: '',
+    }
+  ]);
+
+  const [inputInstruction, setInputInstruction] = useState([
+    {
       instruction: '',
     }
   ]);
+
+
 
   const handleChangeInput = (index, event) => {
     const values = [...inputField];
@@ -57,22 +68,22 @@ const NewRecipe = () => {
   };
 
   const ingredientAddFields = () => {
-    setInputField([...inputField, {ingredient: ''}])
+    setInputIngredient([...inputIngredient, {ingredient: ''}])
   };
 
   const ingredientRemoveFields = (index) => {
-    const values = [...inputField];
-    values.splice(index, 1);
+    const values = [...inputIngredient];
+    values.splice(index, -1);
     setInputField (values);
   };
 
   const instructionAddFields = () => {
-    setInputField([...inputField, {ingredient: ''}])
+    setInputInstruction([...inputInstruction, {ingredient: ''}])
   };
 
   const instructionRemoveFields = (index) => {
-    const values = [...inputField];
-    values.splice(index, 1);
+    const values = [...inputInstruction];
+    values.splice(index, -1);
     setInputField (values);
   };
 
@@ -203,12 +214,12 @@ const NewRecipe = () => {
           />
       </div>
       <div>
-        { inputField.map((inputField, index) => (
+        { inputIngredient.map((inputIngredient, index) => (
           <div key={index}>
             <TextField
               name="ingredient"
               label="Ingredient"
-              value= {inputField.ingredient}
+              value= {inputIngredient.ingredient}
               variant="filled"
             />
             <IconButton
@@ -223,12 +234,12 @@ const NewRecipe = () => {
         ))}
       </div>
       <div>
-        { inputField.map((inputField, index) => (
+        { inputInstruction.map((inputInstruction, index) => (
           <div key={index}>
             <TextField
               name="instruction"
               label="Instruction"
-              value= {inputField.instruction}
+              value= {inputInstruction.instruction}
               variant="filled"
               onChange={event => handleChangeInput(index, event)}
             />
