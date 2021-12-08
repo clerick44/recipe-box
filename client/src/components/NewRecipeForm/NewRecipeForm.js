@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ReactDOM from 'react-dom';
 import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import {RemoveIcon} from '@mui/icons-material';
-import {AddIcon} from '@mui/icons-material';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import SendIcon from '@mui/icons-material/Send';
 import { TextField } from '@mui/material';
 
 // import { makeStyles } from '@mui/core';
@@ -56,7 +57,7 @@ const NewRecipe = () => {
   };
 
   const ingredientAddFields = () => {
-    setInputFields([...inputField, {ingredient: ''}])
+    setInputField([...inputField, {ingredient: ''}])
   };
 
   const ingredientRemoveFields = (index) => {
@@ -66,7 +67,7 @@ const NewRecipe = () => {
   };
 
   const instructionAddFields = () => {
-    setInputFields([...inputField, {ingredient: ''}])
+    setInputField([...inputField, {ingredient: ''}])
   };
 
   const instructionRemoveFields = (index) => {
@@ -247,8 +248,7 @@ const NewRecipe = () => {
         variant="contained" 
         color = "primary" 
         type="submit"
-        endIcon={<Icon>send</Icon>}>
-        onClick={handleSubmit}
+        onClick={handleSubmit}>
         Add Recipe</Button>
      </form>
     </div>
