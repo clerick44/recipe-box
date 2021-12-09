@@ -13,7 +13,7 @@ const Header = (props) => {
   return (
     <header>
       <nav className="navbar">
-        <h1 className="headerTitle"> NOT YOUR GRANDMA'S RECIPE BOOK</h1>
+        <h1 className="headerTitle"> THE RECIPE BOOK</h1>
         <div className="menuIcon" onClick={openMenu}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
