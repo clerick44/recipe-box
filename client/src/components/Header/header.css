@@ -2,7 +2,7 @@
   height: auto;
   background-color: #1A4687;
   position: top;
-  position:absolute;
+  /* position:absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@
 
 .navMenu {
   display: grid;
-  display: flex;
+  /* display: flex; */
   grid-template-columns: repeat(5, auto);
   gap: 0 10px;
   list-style: none;
