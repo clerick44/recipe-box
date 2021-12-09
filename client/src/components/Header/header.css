@@ -2,7 +2,7 @@
   height: auto;
   background-color: #1A4687;
   position: top;
-  position:absolute;
+  /* position:absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
