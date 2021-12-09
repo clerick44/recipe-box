@@ -14,15 +14,15 @@ import "./newRecipeForm.css";
 
 const NewRecipe = () => {
   // new set form state to clear form
-  // const [formState, setFormState] = useState({
-  //   recipeName: "",
-  //   servings: "",
-  //   prepTime: "",
-  //   cookTime: "",
-  //   specialTools: "",
-  //   ingredients: "",
-  //   instructions: "",
-  // });
+  const [formState, setFormState] = useState({
+    recipeName: "",
+    servings: "",
+    prepTime: "",
+    cookTime: "",
+    specialTools: "",
+    ingredients: "",
+    instructions: "",
+  });
 
   // function NewRecipe() {
   const [inputField, setInputField] = useState([
@@ -48,7 +48,7 @@ const NewRecipe = () => {
   ]);
 
   const handleChangeInputIngredient = (index, event) => {
-    console.log(index, event.target.value);
+    console.log(index, event.target);
     const values = [...inputIngredient];
     values[index][event.target.ingredient] = event.target.value;
     setInputIngredient(values);
@@ -86,36 +86,34 @@ const NewRecipe = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
 
-    setInputField({ ...inputField, [name]: value });
-    // setFormState({
-    //   ...formState,
-    //   [name]: value,
-    // });
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   // const handleFormSubmit = async ( e, recipeData) => {
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     console.log(inputField);
 
     e.preventDefault();
-    console.log("register ", inputField.recipeName);
-    console.log("register ", inputField.servings);
-    console.log("register ", inputField.prepTime);
-    console.log("register ", inputField.cookTime);
-    console.log("register ", inputField.specialTools);
-    console.log("register ", inputIngredient);
-    console.log("register ", inputInstruction);
+    console.log("register ", formState.recipeName);
+    console.log("register ", formState.servings);
+    console.log("register ", formState.prepTime);
+    console.log("register ", formState.cookTime);
+    console.log("register ", formState.specialTools);
+    console.log("register ", formState.ingredients);
+    console.log("register ", formState.instructions);
 
-    var recipeName = inputField.recipeName;
-    var servings = inputField.servings;
-    var prepTime = inputField.prepTime;
-    var cookTime = inputField.cookTime;
-    var specialTools = inputField.specialTools;
-    var ingredients = inputIngredient;
-    var instructions = inputInstruction;
+    var recipeName = formState.recipeName;
+    var servings = formState.servings;
+    var prepTime = formState.prepTime;
+    var cookTime = formState.cookTime;
+    var specialTools = formState.specialTools;
+    var ingredients = formState.ingredients;
+    var instructions = formState.instructions;
 
     // const {
     //   recipeName,
@@ -131,7 +129,7 @@ const NewRecipe = () => {
     try {
       console.log("trying to register");
 
-      await addRecipe({
+       addRecipe({
         variables: {
           recipeName,
           servings,
@@ -171,7 +169,7 @@ const NewRecipe = () => {
   //     console.error(e);
   //   }
   // };
-  console.log("********* ", inputField);
+
   return (
     <div id="container">
       <h1>Add New Recipe</h1>
@@ -182,7 +180,6 @@ const NewRecipe = () => {
             label="Recipe Name"
             value={inputField.recipeName}
             variant="filled"
-            onBlur={handleChange}
           />
         </div>
 
@@ -191,7 +188,6 @@ const NewRecipe = () => {
             name="servings"
             label="Number of Servings"
             value={inputField.servings}
-            onBlur={handleChange}
           />
         </div>
         <div className="formField">
@@ -199,7 +195,6 @@ const NewRecipe = () => {
             name="prepTime"
             label="Prep Time"
             value={inputField.prepTime}
-            onBlur={handleChange}
           />
         </div>
         <div className="formField">
@@ -207,15 +202,13 @@ const NewRecipe = () => {
             name="cookTime"
             label="Cook Time"
             value={inputField.cookTime}
-            onBlur={handleChange}
           />
         </div>
         <div className="formField">
           <TextField
             name="specialTools"
             label="Special Tools Used in Recipe"
-            value={inputField.specialTools}
-            onBlur={handleChange}
+            value={inputField.servings}
           />
         </div>
         <div className="formField">
