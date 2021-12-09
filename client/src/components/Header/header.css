@@ -18,7 +18,7 @@
 
 .navMenu {
   display: grid;
-  display: flex;
+  /* display: flex; */
   grid-template-columns: repeat(5, auto);
   gap: 0 10px;
   list-style: none;
