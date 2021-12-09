@@ -1,0 +1,16 @@
+#loginContainer {
+    margin: auto;
+    width: 60vw;
+    min-height: 30vh;
+    border: 3px solid #1A4687;
+    border-radius: 5px;
+    box-shadow: 5px 10px 8px #888888;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #f1e9da;
+    justify-content: center;
+    align-items: center;
+}
+
